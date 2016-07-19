@@ -121,6 +121,10 @@
     <Compile Include="Migrations\201607190351448_new db.Designer.cs">
       <DependentUpon>201607190351448_new db.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607190406198_change column.cs" />
+    <Compile Include="Migrations\201607190406198_change column.Designer.cs">
+      <DependentUpon>201607190406198_change column.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accidente.cs" />
     <Compile Include="Models\Ajuste.cs" />
@@ -155,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607190351448_new db.resx">
       <DependentUpon>201607190351448_new db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607190406198_change column.resx">
+      <DependentUpon>201607190406198_change column.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -21,19 +21,11 @@ namespace Ctm_Col
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan800, Primary.Cyan900, Primary.Cyan500, Accent.Cyan200, TextShade.WHITE);
+            tbSelector.BaseTabControl = tbControl;
 
             using (var db = new Db())
             {
-
-                //var users = db.Usuarios;
-                //cargarDatos(users);
-
-                //if (db.Usuarios.Count() > 0)
-                //    Usuario = db.Usuarios.OrderBy(x => x.ApellidoPaterno).ThenBy(x => x.ApellidoMaterno).ThenBy(x => x.Nombres).First();
-                //else
-                //{
-                //    MessageBox.Show("No hay datos, agrega algunos");
-                //}
+                //var taxi = db.Taxis.First();
             }
         }
 
@@ -308,7 +300,6 @@ namespace Ctm_Col
             btnNuevo.Text = "Guardar";
             btnActualizar.Enabled = false;
             btnEliminar.Enabled = false;
-            btnCancelar.Enabled = true;
         }
 
         private void modoVer()
@@ -317,7 +308,6 @@ namespace Ctm_Col
             btnActualizar.Enabled = true;
             btnEliminar.Enabled = true;
             btnNuevo.Text = "Nuevo";
-            btnCancelar.Enabled = false;
 
             ActiveControl = lvUsuarios;
         }
