@@ -18,6 +18,7 @@ namespace Ctm_Col
     {
         private Chofer _chofer;
         private ReciboDeducible _recibo;
+        private bool porSitio = false;
         private bool porFecha = false;
         private string search = "";
         public Chofer Chofer
@@ -86,6 +87,16 @@ namespace Ctm_Col
                 txtCantidad.Enabled = false;
             }
 
+            using (var db = new Db())
+            {
+                var sitios = db.Taxis.Select(x => x.Sitio).Distinct();
+
+                foreach (var sitio in sitios)
+                {
+                    cmbSitios.Items.Add(sitio);
+                }
+            }
+
             dtpFechaFin.MinDate = dtpFechaIni.Value;
         }
 
@@ -100,19 +111,32 @@ namespace Ctm_Col
             {
                 using (var db = new Db())
                 {
-                    var recibo = new ReciboDeducible
+                    var taxis = db.Taxis.Where(x => x.NumeroEconomico == txtNumero.Text.Trim() && x.Sitio == txtSitio.Text.Trim());
+                    if (taxis.Any())
                     {
-                        Fecha = dtpFecha.Value,
-                        Cantidad = (Double)txtCantidad.Value,
-                        Chofer = db.Choferes.Where(x => x.Id == Chofer.Id).First()
-                    };
+                        var taxi = taxis.First();
+
+                        var recibo = new ReciboDeducible
+                        {
+                            Fecha = dtpFecha.Value,
+                            Cantidad = (Double)txtCantidad.Value,
+                            Chofer = db.Choferes.Where(x => x.Id == Chofer.Id).First(),
+                            Taxi = taxi
+                        };
 
 
-                    db.RecibosDeducible.Add(recibo);
-                    Recibo = recibo;
-                    db.SaveChanges();
+                        db.RecibosDeducible.Add(recibo);
+                        Recibo = recibo;
+                        db.SaveChanges();
+
+                        modoVer();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Taxi no encontrado", "¡Mal!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                modoVer();
+                
             }
         }
 
@@ -157,6 +181,8 @@ namespace Ctm_Col
                 txtApPaterno.Text = Recibo.Chofer.ApellidoPaterno;
                 txtNombre.Text = Recibo.Chofer.Nombres;
                 txtApMaterno.Text = Recibo.Chofer.ApellidoMaterno;
+                txtNumero.Text = Recibo.Taxi.NumeroEconomico;
+                txtSitio.Text = Recibo.Taxi.Sitio;
             }
         }
 
@@ -174,6 +200,9 @@ namespace Ctm_Col
                 if (porFecha)
                     recibos = recibos.Where(x => DbFunctions.TruncateTime(x.Fecha) >= DbFunctions.TruncateTime(dtpFechaIni.Value)
                         && DbFunctions.TruncateTime(x.Fecha) <= DbFunctions.TruncateTime(dtpFechaFin.Value));
+
+                if (porSitio)
+                    recibos = recibos.Where(x => x.Taxi.Sitio == (string)cmbSitios.SelectedItem);
 
                 recibos = recibos.Where(x => x.Id.ToString().StartsWith(search) ||
                     x.Chofer.Nombres.Contains(search) ||
@@ -262,6 +291,15 @@ namespace Ctm_Col
             }
         }
 
+        private void chckSitio_CheckedChanged(object sender, EventArgs e)
+        {
+            filtrarSitio();
+        }
+        private void cmbSitios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filtrarSitio();
+        }
+
         private void chckFecha_CheckedChanged(object sender, EventArgs e)
         {
             filtrarFecha();
@@ -285,10 +323,20 @@ namespace Ctm_Col
             llenarTabla();
         }
 
+        private void filtrarSitio()
+        {
+            if (cmbSitios.SelectedIndex < 0) return;
+
+            porSitio = chckSitio.Checked;
+
+            llenarTabla();
+        }
+
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             search = txtBuscar.Text;
             llenarTabla();
         }
+        
     }
 }

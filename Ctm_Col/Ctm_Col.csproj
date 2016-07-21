@@ -180,6 +180,10 @@
     <Compile Include="Migrations\201607212141316_add table RecibosDeducible.Designer.cs">
       <DependentUpon>201607212141316_add table RecibosDeducible.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607212235598_COlumn added to recibosDeducibles.cs" />
+    <Compile Include="Migrations\201607212235598_COlumn added to recibosDeducibles.Designer.cs">
+      <DependentUpon>201607212235598_COlumn added to recibosDeducibles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accidente.cs" />
     <Compile Include="Models\Ajuste.cs" />
@@ -281,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607212141316_add table RecibosDeducible.resx">
       <DependentUpon>201607212141316_add table RecibosDeducible.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607212235598_COlumn added to recibosDeducibles.resx">
+      <DependentUpon>201607212235598_COlumn added to recibosDeducibles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PolizaForm.resx">
       <DependentUpon>PolizaForm.cs</DependentUpon>

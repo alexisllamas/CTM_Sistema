@@ -38,5 +38,12 @@ namespace Ctm_Col
 
             reciboForm.Show();
         }
+
+        private void btnRecibosDeducible_Click(object sender, EventArgs e)
+        {
+            var reciboForm = new RecibosDeducibleForm();
+
+            reciboForm.Show();
+        }
     }
 }
