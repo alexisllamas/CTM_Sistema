@@ -47,7 +47,19 @@
             this.btnDescartar = new MaterialSkin.Controls.MaterialFlatButton();
             this.txtId = new Ctm_Col.MaterialTextBox();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtBuscar = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.chckSitio = new MaterialSkin.Controls.MaterialCheckBox();
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.cmbSitios = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpFechaIni = new System.Windows.Forms.DateTimePicker();
+            this.chckFecha = new MaterialSkin.Controls.MaterialCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvRecibos
@@ -61,7 +73,7 @@
             this.columnHeader4});
             this.lvRecibos.FullRowSelect = true;
             this.lvRecibos.GridLines = true;
-            this.lvRecibos.Location = new System.Drawing.Point(12, 249);
+            this.lvRecibos.Location = new System.Drawing.Point(14, 399);
             this.lvRecibos.Name = "lvRecibos";
             this.lvRecibos.Size = new System.Drawing.Size(443, 97);
             this.lvRecibos.TabIndex = 0;
@@ -252,11 +264,148 @@
             this.materialFlatButton1.Text = "Imprimir";
             this.materialFlatButton1.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Enabled = false;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(4, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 12);
+            this.label3.TabIndex = 76;
+            this.label3.Text = "Buscar:";
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Depth = 0;
+            this.txtBuscar.Hint = "Buscar...";
+            this.txtBuscar.Location = new System.Drawing.Point(6, 51);
+            this.txtBuscar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(144, 23);
+            this.txtBuscar.TabIndex = 75;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // chckSitio
+            // 
+            this.chckSitio.AutoSize = true;
+            this.chckSitio.Depth = 0;
+            this.chckSitio.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chckSitio.Location = new System.Drawing.Point(164, 27);
+            this.chckSitio.Margin = new System.Windows.Forms.Padding(0);
+            this.chckSitio.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chckSitio.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chckSitio.Name = "chckSitio";
+            this.chckSitio.Ripple = true;
+            this.chckSitio.Size = new System.Drawing.Size(81, 30);
+            this.chckSitio.TabIndex = 77;
+            this.chckSitio.Text = "Por sitio";
+            this.chckSitio.UseVisualStyleBackColor = true;
+            this.chckSitio.CheckedChanged += new System.EventHandler(this.chckSitio_CheckedChanged);
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Enabled = false;
+            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(294, 16);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(28, 12);
+            this.lblFecha.TabIndex = 79;
+            this.lblFecha.Text = "Sitio";
+            // 
+            // cmbSitios
+            // 
+            this.cmbSitios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSitios.FormattingEnabled = true;
+            this.cmbSitios.Location = new System.Drawing.Point(296, 32);
+            this.cmbSitios.Name = "cmbSitios";
+            this.cmbSitios.Size = new System.Drawing.Size(121, 21);
+            this.cmbSitios.TabIndex = 78;
+            this.cmbSitios.SelectedIndexChanged += new System.EventHandler(this.cmbSitios_SelectedIndexChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.dtpFechaFin);
+            this.groupBox1.Controls.Add(this.txtBuscar);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.dtpFechaIni);
+            this.groupBox1.Controls.Add(this.chckFecha);
+            this.groupBox1.Controls.Add(this.chckSitio);
+            this.groupBox1.Controls.Add(this.lblFecha);
+            this.groupBox1.Controls.Add(this.cmbSitios);
+            this.groupBox1.Location = new System.Drawing.Point(14, 284);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(443, 109);
+            this.groupBox1.TabIndex = 80;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filtrar";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Enabled = false;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(348, 62);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 12);
+            this.label5.TabIndex = 84;
+            this.label5.Text = "Fecha final";
+            // 
+            // dtpFechaFin
+            // 
+            this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFin.Location = new System.Drawing.Point(350, 77);
+            this.dtpFechaFin.Name = "dtpFechaFin";
+            this.dtpFechaFin.Size = new System.Drawing.Size(86, 20);
+            this.dtpFechaFin.TabIndex = 83;
+            this.dtpFechaFin.ValueChanged += new System.EventHandler(this.dtpFechaFin_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Enabled = false;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(249, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 12);
+            this.label2.TabIndex = 82;
+            this.label2.Text = "Fecha Inicial";
+            // 
+            // dtpFechaIni
+            // 
+            this.dtpFechaIni.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaIni.Location = new System.Drawing.Point(251, 77);
+            this.dtpFechaIni.Name = "dtpFechaIni";
+            this.dtpFechaIni.Size = new System.Drawing.Size(86, 20);
+            this.dtpFechaIni.TabIndex = 81;
+            this.dtpFechaIni.ValueChanged += new System.EventHandler(this.dtpFechaIni_ValueChanged);
+            // 
+            // chckFecha
+            // 
+            this.chckFecha.AutoSize = true;
+            this.chckFecha.Depth = 0;
+            this.chckFecha.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chckFecha.Location = new System.Drawing.Point(164, 68);
+            this.chckFecha.Margin = new System.Windows.Forms.Padding(0);
+            this.chckFecha.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chckFecha.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chckFecha.Name = "chckFecha";
+            this.chckFecha.Ripple = true;
+            this.chckFecha.Size = new System.Drawing.Size(67, 30);
+            this.chckFecha.TabIndex = 80;
+            this.chckFecha.Text = "Fecha";
+            this.chckFecha.UseVisualStyleBackColor = true;
+            this.chckFecha.CheckedChanged += new System.EventHandler(this.chckFecha_CheckedChanged);
+            // 
             // RecibosPolizaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 363);
+            this.ClientSize = new System.Drawing.Size(488, 520);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnDescartar);
@@ -275,6 +424,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Recibo Póliza";
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,5 +452,16 @@
         private MaterialSkin.Controls.MaterialFlatButton btnDescartar;
         private MaterialTextBox txtId;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
+        private System.Windows.Forms.Label label3;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtBuscar;
+        private MaterialSkin.Controls.MaterialCheckBox chckSitio;
+        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.ComboBox cmbSitios;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private MaterialSkin.Controls.MaterialCheckBox chckFecha;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtpFechaIni;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dtpFechaFin;
     }
 }

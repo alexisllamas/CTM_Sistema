@@ -365,5 +365,12 @@ namespace Ctm_Col
             }
 
         }
+
+        private void btnPoliza_Click(object sender, EventArgs e)
+        {
+            var polizaForm = new PolizaForm(Concesionario);
+
+            polizaForm.ShowDialog();
+        }
     }
 }

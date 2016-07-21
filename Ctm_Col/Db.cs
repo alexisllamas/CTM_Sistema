@@ -28,6 +28,7 @@ namespace Ctm_Col
         public DbSet<Poliza> Polizas { get; set; }
         public DbSet<ReciboPoliza> RecibosPoliza { get; set; }
         public DbSet<ReciboCredencial> RecibosCredencial { get; set; }
+        public DbSet<ReciboDeducible> RecibosDeducible { get; set; }
         public DbSet<Taxi> Taxis { get; set; }
         public DbSet<Chofer> Choferes { get; set; }
         public DbSet<Concesionario> Concesionarios { get; set; }

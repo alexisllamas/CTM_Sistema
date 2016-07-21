@@ -14,10 +14,10 @@ using System.Data.Entity;
 
 namespace Ctm_Col
 {
-    public partial class RecibosCredencialForm : MaterialForm
+    public partial class RecibosDeducibleForm : MaterialForm
     {
         private Chofer _chofer;
-        private ReciboCredencial _recibo;
+        private ReciboDeducible _recibo;
         private bool porFecha = false;
         private string search = "";
         public Chofer Chofer
@@ -34,9 +34,9 @@ namespace Ctm_Col
                 {
                     if (_chofer != null)
                     {
-                        if (db.RecibosCredencial.Where(x => x.Chofer.Id == _chofer.Id).Any())
+                        if (db.RecibosDeducible.Where(x => x.Chofer.Id == _chofer.Id).Any())
                         {
-                            Recibo = (db.RecibosCredencial.Where(x => x.Chofer.Id == _chofer.Id).OrderByDescending(x => x.Fecha).First());
+                            Recibo = (db.RecibosDeducible.Where(x => x.Chofer.Id == _chofer.Id).OrderByDescending(x => x.Fecha).First());
 
                             modoVer();
                             cargarDatos();
@@ -49,7 +49,7 @@ namespace Ctm_Col
                 }
             }
         }
-        public ReciboCredencial Recibo
+        public ReciboDeducible Recibo
         {
             get
             {
@@ -66,7 +66,7 @@ namespace Ctm_Col
                 }
             }
         }
-        public RecibosCredencialForm()
+        public RecibosDeducibleForm()
         {
             InitializeComponent();
 
@@ -100,7 +100,7 @@ namespace Ctm_Col
             {
                 using (var db = new Db())
                 {
-                    var recibo = new ReciboCredencial
+                    var recibo = new ReciboDeducible
                     {
                         Fecha = dtpFecha.Value,
                         Cantidad = (Double)txtCantidad.Value,
@@ -108,7 +108,7 @@ namespace Ctm_Col
                     };
 
 
-                    db.RecibosCredencial.Add(recibo);
+                    db.RecibosDeducible.Add(recibo);
                     Recibo = recibo;
                     db.SaveChanges();
                 }
@@ -165,11 +165,11 @@ namespace Ctm_Col
             lvRecibos.Items.Clear();
             using (var db = new Db())
             {
-                IQueryable<ReciboCredencial> recibos;
+                IQueryable<ReciboDeducible> recibos;
                 if (Chofer != null)
-                    recibos = db.RecibosCredencial.Where(x => x.Chofer.Id == Chofer.Id).OrderByDescending(x => x.Fecha);
+                    recibos = db.RecibosDeducible.Where(x => x.Chofer.Id == Chofer.Id).OrderByDescending(x => x.Fecha);
                 else
-                    recibos = db.RecibosCredencial.OrderByDescending(x=>x.Fecha);
+                    recibos = db.RecibosDeducible.OrderByDescending(x=>x.Fecha);
 
                 if (porFecha)
                     recibos = recibos.Where(x => DbFunctions.TruncateTime(x.Fecha) >= DbFunctions.TruncateTime(dtpFechaIni.Value)
@@ -188,30 +188,8 @@ namespace Ctm_Col
                     lvi.SubItems.Add(recibo.Chofer.Nombres);
                     lvi.SubItems.Add(recibo.Chofer.ApellidoPaterno);
                     lvi.SubItems.Add(recibo.Chofer.ApellidoMaterno);
-
-                    lvRecibos.Items.Add(lvi);
-                }
-            }
-        }
-
-        private void llenarTabla(IQueryable<ReciboCredencial> recibos)
-        {
-            lvRecibos.Items.Clear();
-            using (var db = new Db())
-            {
-                if (Chofer != null)
-                    recibos = recibos.Where(x => x.Chofer.Id == Chofer.Id).OrderByDescending(x => x.Fecha);
-                else
-                    recibos = recibos.OrderBy(x => x.Fecha);
-
-                foreach (var recibo in recibos)
-                {
-                    var lvi = new ListViewItem(recibo.Id.ToString());
-                    lvi.SubItems.Add(recibo.Fecha.ToShortDateString());
-                    lvi.SubItems.Add(String.Format("{0:c}", recibo.Cantidad));
-                    lvi.SubItems.Add(recibo.Chofer.Nombres);
-                    lvi.SubItems.Add(recibo.Chofer.ApellidoPaterno);
-                    lvi.SubItems.Add(recibo.Chofer.ApellidoMaterno);
+                    lvi.SubItems.Add(recibo.Taxi.NumeroEconomico);
+                    lvi.SubItems.Add(recibo.Taxi.Sitio);
 
                     lvRecibos.Items.Add(lvi);
                 }
@@ -224,7 +202,7 @@ namespace Ctm_Col
             {
                 using (var db = new Db())
                 {
-                    var recibo = db.RecibosCredencial.Where(x => x.Id == Recibo.Id).First();
+                    var recibo = db.RecibosDeducible.Where(x => x.Id == Recibo.Id).First();
 
                     recibo.Cantidad = (double)txtCantidad.Value;
                     recibo.Fecha = dtpFecha.Value;
@@ -246,12 +224,12 @@ namespace Ctm_Col
                     DialogResult boton = MessageBox.Show("¿Quieres eliminar este recibo " + Recibo.Id + "?", "Alerta", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
                     if (boton == DialogResult.Yes)
                     {
-                        var recibo = db.RecibosCredencial.Where(x => x.Id == Recibo.Id).First();
-                        db.RecibosCredencial.Remove(recibo);
+                        var recibo = db.RecibosDeducible.Where(x => x.Id == Recibo.Id).First();
+                        db.RecibosDeducible.Remove(recibo);
                         db.SaveChanges();
 
                         if (db.RecibosCredencial.Where(x => x.Chofer.Id == Chofer.Id).Any())
-                            Recibo = db.RecibosCredencial.Where(x => x.Chofer.Id == Chofer.Id).First();
+                            Recibo = db.RecibosDeducible.Where(x => x.Chofer.Id == Chofer.Id).First();
                         else
                         {
                             modoNuevo();
@@ -269,7 +247,7 @@ namespace Ctm_Col
             var id = Int32.Parse(lvRecibos.SelectedItems[0].SubItems[0].Text);
             using (var db = new Db())
             {
-                var recibo = db.RecibosCredencial.Where(x => x.Id == id).First();
+                var recibo = db.RecibosDeducible.Where(x => x.Id == id).First();
                 _recibo = recibo;
                 cargarDatos();
             }
@@ -279,7 +257,7 @@ namespace Ctm_Col
         {
             using (var db = new Db())
             {
-                if (db.RecibosCredencial.Where(x=>x.Chofer.Id == Chofer.Id).Any())
+                if (db.RecibosDeducible.Where(x=>x.Chofer.Id == Chofer.Id).Any())
                     modoVer();
             }
         }

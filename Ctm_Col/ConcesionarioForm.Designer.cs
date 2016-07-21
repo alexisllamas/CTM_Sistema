@@ -32,7 +32,7 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.materialRaisedButton2 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnPoliza = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnReciboPoliza = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnActualizar = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnNuevo = new MaterialSkin.Controls.MaterialFlatButton();
@@ -116,17 +116,18 @@
             this.tabPage7.TabIndex = 0;
             this.tabPage7.Text = "tabPage7";
             // 
-            // materialRaisedButton2
+            // btnPoliza
             // 
-            this.materialRaisedButton2.Depth = 0;
-            this.materialRaisedButton2.Location = new System.Drawing.Point(615, 389);
-            this.materialRaisedButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton2.Name = "materialRaisedButton2";
-            this.materialRaisedButton2.Primary = true;
-            this.materialRaisedButton2.Size = new System.Drawing.Size(131, 23);
-            this.materialRaisedButton2.TabIndex = 66;
-            this.materialRaisedButton2.Text = "Generar Póliza";
-            this.materialRaisedButton2.UseVisualStyleBackColor = true;
+            this.btnPoliza.Depth = 0;
+            this.btnPoliza.Location = new System.Drawing.Point(615, 389);
+            this.btnPoliza.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnPoliza.Name = "btnPoliza";
+            this.btnPoliza.Primary = true;
+            this.btnPoliza.Size = new System.Drawing.Size(131, 23);
+            this.btnPoliza.TabIndex = 66;
+            this.btnPoliza.Text = "Generar Póliza";
+            this.btnPoliza.UseVisualStyleBackColor = true;
+            this.btnPoliza.Click += new System.EventHandler(this.btnPoliza_Click);
             // 
             // btnReciboPoliza
             // 
@@ -585,7 +586,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(777, 642);
-            this.Controls.Add(this.materialRaisedButton2);
+            this.Controls.Add(this.btnPoliza);
             this.Controls.Add(this.btnReciboPoliza);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnNuevo);
@@ -620,7 +621,7 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TabPage tabPage7;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton2;
+        private MaterialSkin.Controls.MaterialRaisedButton btnPoliza;
         private MaterialSkin.Controls.MaterialRaisedButton btnReciboPoliza;
         private MaterialSkin.Controls.MaterialFlatButton btnActualizar;
         private MaterialSkin.Controls.MaterialFlatButton btnNuevo;

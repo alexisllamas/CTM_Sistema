@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.materialRaisedButton2 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnCredencial = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnReciboCredencial = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnActualizar = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnNuevo = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnEliminar = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnCancelar = new MaterialSkin.Controls.MaterialFlatButton();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBuscar = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.lvChoferes = new System.Windows.Forms.ListView();
@@ -45,49 +44,53 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblFecha = new System.Windows.Forms.Label();
-            this.dtConNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbConMunicipio = new System.Windows.Forms.ComboBox();
-            this.txtSitio = new Ctm_Col.MaterialTextBox();
-            this.txtNumero = new Ctm_Col.MaterialTextBox();
             this.txtNombre = new Ctm_Col.MaterialTextBox();
             this.txtApPaterno = new Ctm_Col.MaterialTextBox();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.txtApMaterno = new Ctm_Col.MaterialTextBox();
+            this.dtConNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtConTelefono = new Ctm_Col.MaterialTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtConCalle = new Ctm_Col.MaterialTextBox();
             this.txtConColonia = new Ctm_Col.MaterialTextBox();
+            this.cmbConMunicipio = new System.Windows.Forms.ComboBox();
             this.txtConId = new Ctm_Col.MaterialTextBox();
-            this.groupBox4.SuspendLayout();
+            this.txtLicencia = new Ctm_Col.MaterialTextBox();
+            this.grpboxCredencial = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnAccidentes = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnReciboDeducible = new MaterialSkin.Controls.MaterialRaisedButton();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.grpboxCredencial.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // materialRaisedButton2
+            // btnCredencial
             // 
-            this.materialRaisedButton2.Depth = 0;
-            this.materialRaisedButton2.Location = new System.Drawing.Point(322, 439);
-            this.materialRaisedButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton2.Name = "materialRaisedButton2";
-            this.materialRaisedButton2.Primary = true;
-            this.materialRaisedButton2.Size = new System.Drawing.Size(174, 23);
-            this.materialRaisedButton2.TabIndex = 80;
-            this.materialRaisedButton2.Text = "Generar Credencial";
-            this.materialRaisedButton2.UseVisualStyleBackColor = true;
+            this.btnCredencial.Depth = 0;
+            this.btnCredencial.Location = new System.Drawing.Point(11, 65);
+            this.btnCredencial.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCredencial.Name = "btnCredencial";
+            this.btnCredencial.Primary = true;
+            this.btnCredencial.Size = new System.Drawing.Size(174, 23);
+            this.btnCredencial.TabIndex = 80;
+            this.btnCredencial.Text = "Credencial";
+            this.btnCredencial.UseVisualStyleBackColor = true;
+            this.btnCredencial.Click += new System.EventHandler(this.btnCredencial_Click);
             // 
             // btnReciboCredencial
             // 
             this.btnReciboCredencial.Depth = 0;
-            this.btnReciboCredencial.Location = new System.Drawing.Point(142, 439);
+            this.btnReciboCredencial.Location = new System.Drawing.Point(11, 19);
             this.btnReciboCredencial.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnReciboCredencial.Name = "btnReciboCredencial";
             this.btnReciboCredencial.Primary = true;
             this.btnReciboCredencial.Size = new System.Drawing.Size(174, 23);
             this.btnReciboCredencial.TabIndex = 79;
-            this.btnReciboCredencial.Text = "Recibo Credencial";
+            this.btnReciboCredencial.Text = "Recibos";
             this.btnReciboCredencial.UseVisualStyleBackColor = true;
             this.btnReciboCredencial.Click += new System.EventHandler(this.btnReciboCredencial_Click);
             // 
@@ -156,23 +159,12 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.txtSitio);
-            this.groupBox4.Controls.Add(this.txtNumero);
-            this.groupBox4.Location = new System.Drawing.Point(315, 79);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(232, 73);
-            this.groupBox4.TabIndex = 72;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Taxi";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Enabled = false;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 474);
+            this.label3.Location = new System.Drawing.Point(15, 518);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 12);
             this.label3.TabIndex = 74;
@@ -182,7 +174,7 @@
             // 
             this.txtBuscar.Depth = 0;
             this.txtBuscar.Hint = "Buscar...";
-            this.txtBuscar.Location = new System.Drawing.Point(14, 489);
+            this.txtBuscar.Location = new System.Drawing.Point(14, 533);
             this.txtBuscar.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(144, 23);
@@ -199,11 +191,10 @@
             this.columnHeader4,
             this.columnHeader8,
             this.columnHeader6,
-            this.columnHeader5,
-            this.columnHeader7});
+            this.columnHeader5});
             this.lvChoferes.FullRowSelect = true;
             this.lvChoferes.GridLines = true;
-            this.lvChoferes.Location = new System.Drawing.Point(14, 518);
+            this.lvChoferes.Location = new System.Drawing.Point(14, 568);
             this.lvChoferes.MultiSelect = false;
             this.lvChoferes.Name = "lvChoferes";
             this.lvChoferes.Size = new System.Drawing.Size(585, 153);
@@ -216,12 +207,12 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "ID";
-            this.columnHeader1.Width = 36;
+            this.columnHeader1.Width = 52;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Nombres";
-            this.columnHeader2.Width = 81;
+            this.columnHeader2.Width = 92;
             // 
             // columnHeader3
             // 
@@ -236,22 +227,17 @@
             // columnHeader8
             // 
             this.columnHeader8.Text = "Municipio";
-            this.columnHeader8.Width = 65;
+            this.columnHeader8.Width = 80;
             // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "Teléfono";
-            this.columnHeader6.Width = 68;
+            this.columnHeader6.Width = 75;
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "Número";
-            this.columnHeader5.Width = 50;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Sitio";
-            this.columnHeader7.Width = 90;
+            this.columnHeader5.Text = "Licencia";
+            this.columnHeader5.Width = 97;
             // 
             // groupBox2
             // 
@@ -267,6 +253,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos Personales";
             // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(6, 19);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Placeholder = "Nombre(s)";
+            this.txtNombre.Size = new System.Drawing.Size(116, 48);
+            this.txtNombre.TabIndex = 2;
+            // 
+            // txtApPaterno
+            // 
+            this.txtApPaterno.Location = new System.Drawing.Point(128, 19);
+            this.txtApPaterno.Name = "txtApPaterno";
+            this.txtApPaterno.Placeholder = "Apellido Paterno";
+            this.txtApPaterno.Size = new System.Drawing.Size(116, 48);
+            this.txtApPaterno.TabIndex = 3;
+            // 
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
@@ -277,6 +279,14 @@
             this.lblFecha.Size = new System.Drawing.Size(109, 12);
             this.lblFecha.TabIndex = 11;
             this.lblFecha.Text = "Fecha de nacimiento";
+            // 
+            // txtApMaterno
+            // 
+            this.txtApMaterno.Location = new System.Drawing.Point(250, 19);
+            this.txtApMaterno.Name = "txtApMaterno";
+            this.txtApMaterno.Placeholder = "Apellido Materno";
+            this.txtApMaterno.Size = new System.Drawing.Size(116, 48);
+            this.txtApMaterno.TabIndex = 4;
             // 
             // dtConNacimiento
             // 
@@ -304,6 +314,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Domicilio";
             // 
+            // txtConTelefono
+            // 
+            this.txtConTelefono.Location = new System.Drawing.Point(268, 19);
+            this.txtConTelefono.Name = "txtConTelefono";
+            this.txtConTelefono.Placeholder = "Teléfono";
+            this.txtConTelefono.Size = new System.Drawing.Size(83, 48);
+            this.txtConTelefono.TabIndex = 7;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -314,6 +332,22 @@
             this.label1.Size = new System.Drawing.Size(54, 12);
             this.label1.TabIndex = 12;
             this.label1.Text = "Municipio";
+            // 
+            // txtConCalle
+            // 
+            this.txtConCalle.Location = new System.Drawing.Point(7, 19);
+            this.txtConCalle.Name = "txtConCalle";
+            this.txtConCalle.Placeholder = "Calle y número";
+            this.txtConCalle.Size = new System.Drawing.Size(149, 48);
+            this.txtConCalle.TabIndex = 6;
+            // 
+            // txtConColonia
+            // 
+            this.txtConColonia.Location = new System.Drawing.Point(162, 19);
+            this.txtConColonia.Name = "txtConColonia";
+            this.txtConColonia.Placeholder = "Colonia";
+            this.txtConColonia.Size = new System.Drawing.Size(99, 48);
+            this.txtConColonia.TabIndex = 8;
             // 
             // cmbConMunicipio
             // 
@@ -335,71 +369,6 @@
             this.cmbConMunicipio.TabIndex = 9;
             this.cmbConMunicipio.Text = "Municipio";
             // 
-            // txtSitio
-            // 
-            this.txtSitio.Location = new System.Drawing.Point(75, 19);
-            this.txtSitio.Name = "txtSitio";
-            this.txtSitio.Placeholder = "Sitio";
-            this.txtSitio.Size = new System.Drawing.Size(154, 48);
-            this.txtSitio.TabIndex = 14;
-            this.txtSitio.Tag = "";
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.Location = new System.Drawing.Point(6, 19);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Placeholder = "Número";
-            this.txtNumero.Size = new System.Drawing.Size(60, 48);
-            this.txtNumero.TabIndex = 13;
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(6, 19);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Placeholder = "Nombre(s)";
-            this.txtNombre.Size = new System.Drawing.Size(116, 48);
-            this.txtNombre.TabIndex = 2;
-            // 
-            // txtApPaterno
-            // 
-            this.txtApPaterno.Location = new System.Drawing.Point(128, 19);
-            this.txtApPaterno.Name = "txtApPaterno";
-            this.txtApPaterno.Placeholder = "Apellido Paterno";
-            this.txtApPaterno.Size = new System.Drawing.Size(116, 48);
-            this.txtApPaterno.TabIndex = 3;
-            // 
-            // txtApMaterno
-            // 
-            this.txtApMaterno.Location = new System.Drawing.Point(250, 19);
-            this.txtApMaterno.Name = "txtApMaterno";
-            this.txtApMaterno.Placeholder = "Apellido Materno";
-            this.txtApMaterno.Size = new System.Drawing.Size(116, 48);
-            this.txtApMaterno.TabIndex = 4;
-            // 
-            // txtConTelefono
-            // 
-            this.txtConTelefono.Location = new System.Drawing.Point(268, 19);
-            this.txtConTelefono.Name = "txtConTelefono";
-            this.txtConTelefono.Placeholder = "Teléfono";
-            this.txtConTelefono.Size = new System.Drawing.Size(83, 48);
-            this.txtConTelefono.TabIndex = 7;
-            // 
-            // txtConCalle
-            // 
-            this.txtConCalle.Location = new System.Drawing.Point(7, 19);
-            this.txtConCalle.Name = "txtConCalle";
-            this.txtConCalle.Placeholder = "Calle y número";
-            this.txtConCalle.Size = new System.Drawing.Size(149, 48);
-            this.txtConCalle.TabIndex = 6;
-            // 
-            // txtConColonia
-            // 
-            this.txtConColonia.Location = new System.Drawing.Point(162, 19);
-            this.txtConColonia.Name = "txtConColonia";
-            this.txtConColonia.Placeholder = "Colonia";
-            this.txtConColonia.Size = new System.Drawing.Size(99, 48);
-            this.txtConColonia.TabIndex = 8;
-            // 
             // txtConId
             // 
             this.txtConId.Enabled = false;
@@ -410,18 +379,73 @@
             this.txtConId.TabIndex = 73;
             this.txtConId.Text = "3";
             // 
+            // txtLicencia
+            // 
+            this.txtLicencia.Location = new System.Drawing.Point(294, 88);
+            this.txtLicencia.Name = "txtLicencia";
+            this.txtLicencia.Placeholder = "Licencia";
+            this.txtLicencia.Size = new System.Drawing.Size(230, 48);
+            this.txtLicencia.TabIndex = 81;
+            // 
+            // grpboxCredencial
+            // 
+            this.grpboxCredencial.Controls.Add(this.btnCredencial);
+            this.grpboxCredencial.Controls.Add(this.btnReciboCredencial);
+            this.grpboxCredencial.Location = new System.Drawing.Point(39, 411);
+            this.grpboxCredencial.Name = "grpboxCredencial";
+            this.grpboxCredencial.Size = new System.Drawing.Size(200, 100);
+            this.grpboxCredencial.TabIndex = 82;
+            this.grpboxCredencial.TabStop = false;
+            this.grpboxCredencial.Text = "Credencial";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnAccidentes);
+            this.groupBox3.Controls.Add(this.btnReciboDeducible);
+            this.groupBox3.Location = new System.Drawing.Point(338, 411);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 100);
+            this.groupBox3.TabIndex = 83;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Deducible";
+            // 
+            // btnAccidentes
+            // 
+            this.btnAccidentes.Depth = 0;
+            this.btnAccidentes.Location = new System.Drawing.Point(11, 65);
+            this.btnAccidentes.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAccidentes.Name = "btnAccidentes";
+            this.btnAccidentes.Primary = true;
+            this.btnAccidentes.Size = new System.Drawing.Size(174, 23);
+            this.btnAccidentes.TabIndex = 80;
+            this.btnAccidentes.Text = "Accidentes";
+            this.btnAccidentes.UseVisualStyleBackColor = true;
+            // 
+            // btnReciboDeducible
+            // 
+            this.btnReciboDeducible.Depth = 0;
+            this.btnReciboDeducible.Location = new System.Drawing.Point(11, 19);
+            this.btnReciboDeducible.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnReciboDeducible.Name = "btnReciboDeducible";
+            this.btnReciboDeducible.Primary = true;
+            this.btnReciboDeducible.Size = new System.Drawing.Size(174, 23);
+            this.btnReciboDeducible.TabIndex = 79;
+            this.btnReciboDeducible.Text = "Recibos";
+            this.btnReciboDeducible.UseVisualStyleBackColor = true;
+            this.btnReciboDeducible.Click += new System.EventHandler(this.btnReciboDeducible_Click);
+            // 
             // ChoferForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 678);
-            this.Controls.Add(this.materialRaisedButton2);
-            this.Controls.Add(this.btnReciboCredencial);
+            this.ClientSize = new System.Drawing.Size(622, 733);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.grpboxCredencial);
+            this.Controls.Add(this.txtLicencia);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lvChoferes);
@@ -431,11 +455,12 @@
             this.Name = "ChoferForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Choferes";
-            this.groupBox4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.grpboxCredencial.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -443,15 +468,12 @@
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton2;
+        private MaterialSkin.Controls.MaterialRaisedButton btnCredencial;
         private MaterialSkin.Controls.MaterialRaisedButton btnReciboCredencial;
         private MaterialSkin.Controls.MaterialFlatButton btnActualizar;
         private MaterialSkin.Controls.MaterialFlatButton btnNuevo;
         private MaterialSkin.Controls.MaterialFlatButton btnEliminar;
         private MaterialSkin.Controls.MaterialFlatButton btnCancelar;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private MaterialTextBox txtSitio;
-        private MaterialTextBox txtNumero;
         private System.Windows.Forms.Label label3;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtBuscar;
         private System.Windows.Forms.ListView lvChoferes;
@@ -461,8 +483,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.GroupBox groupBox2;
         private MaterialTextBox txtNombre;
         private MaterialTextBox txtApPaterno;
@@ -476,5 +496,11 @@
         private MaterialTextBox txtConColonia;
         private System.Windows.Forms.ComboBox cmbConMunicipio;
         private MaterialTextBox txtConId;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private MaterialTextBox txtLicencia;
+        private System.Windows.Forms.GroupBox grpboxCredencial;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private MaterialSkin.Controls.MaterialRaisedButton btnAccidentes;
+        private MaterialSkin.Controls.MaterialRaisedButton btnReciboDeducible;
     }
 }

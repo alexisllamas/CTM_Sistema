@@ -11,7 +11,7 @@ namespace Ctm_Col.Models
         public string Licencia { get; set; }
         public virtual Credencial Credencial { get; set; }
         public virtual ICollection<ReciboCredencial> RecibosCredencial { get; set; }
+        public virtual ICollection<ReciboDeducible> RecibosDeducible { get; set; }
         public virtual ICollection<Accidente> Accidentes { get; set; }
-        public virtual Taxi Taxi { get; set; }
     }
 }

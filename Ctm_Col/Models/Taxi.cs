@@ -18,8 +18,7 @@ namespace Ctm_Col.Models
         public string Capacidad { get; set; }
         public string Placa { get; set; }
 
-        public virtual ICollection<Chofer> Choferes { get; set; }
-
+        public virtual ICollection<ReciboDeducible> RecibosDeducible { get; set; }
         public virtual Concesionario Concesionario { get; set; }
     }
 }

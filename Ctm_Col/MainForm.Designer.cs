@@ -30,6 +30,8 @@
         {
             this.btnConcesionarios = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnChoferes = new MaterialSkin.Controls.MaterialFlatButton();
+            this.txtPolizas = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnRecibos = new MaterialSkin.Controls.MaterialFlatButton();
             this.SuspendLayout();
             // 
             // btnConcesionarios
@@ -64,11 +66,45 @@
             this.btnChoferes.UseVisualStyleBackColor = true;
             this.btnChoferes.Click += new System.EventHandler(this.btnChoferes_Click);
             // 
+            // txtPolizas
+            // 
+            this.txtPolizas.AutoSize = true;
+            this.txtPolizas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.txtPolizas.Depth = 0;
+            this.txtPolizas.Location = new System.Drawing.Point(40, 174);
+            this.txtPolizas.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.txtPolizas.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtPolizas.Name = "txtPolizas";
+            this.txtPolizas.Primary = false;
+            this.txtPolizas.Size = new System.Drawing.Size(132, 36);
+            this.txtPolizas.TabIndex = 2;
+            this.txtPolizas.Text = "Generar Polizas";
+            this.txtPolizas.UseVisualStyleBackColor = true;
+            this.txtPolizas.Click += new System.EventHandler(this.txtPolizas_Click);
+            // 
+            // btnRecibos
+            // 
+            this.btnRecibos.AutoSize = true;
+            this.btnRecibos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRecibos.Depth = 0;
+            this.btnRecibos.Location = new System.Drawing.Point(208, 174);
+            this.btnRecibos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRecibos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnRecibos.Name = "btnRecibos";
+            this.btnRecibos.Primary = false;
+            this.btnRecibos.Size = new System.Drawing.Size(68, 36);
+            this.btnRecibos.TabIndex = 3;
+            this.btnRecibos.Text = "Recibos";
+            this.btnRecibos.UseVisualStyleBackColor = true;
+            this.btnRecibos.Click += new System.EventHandler(this.btnRecibos_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 202);
+            this.ClientSize = new System.Drawing.Size(464, 245);
+            this.Controls.Add(this.btnRecibos);
+            this.Controls.Add(this.txtPolizas);
             this.Controls.Add(this.btnChoferes);
             this.Controls.Add(this.btnConcesionarios);
             this.Name = "MainForm";
@@ -82,5 +118,7 @@
 
         private MaterialSkin.Controls.MaterialFlatButton btnConcesionarios;
         private MaterialSkin.Controls.MaterialFlatButton btnChoferes;
+        private MaterialSkin.Controls.MaterialFlatButton txtPolizas;
+        private MaterialSkin.Controls.MaterialFlatButton btnRecibos;
     }
 }

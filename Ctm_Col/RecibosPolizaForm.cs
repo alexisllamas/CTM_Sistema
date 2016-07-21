@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,6 +19,9 @@ namespace Ctm_Col
     {
         private Concesionario _concesionario;
         private ReciboPoliza _recibo;
+        private bool porSitio = false;
+        private bool porFecha = false;
+        private string search = "";
 
         public Concesionario Concesionario
         {
@@ -39,7 +44,10 @@ namespace Ctm_Col
                             cargarDatos();
                         }
                         else
+                        {
                             modoNuevo();
+                            llenarTabla();
+                        }
                     } 
                 }
             }
@@ -71,6 +79,29 @@ namespace Ctm_Col
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Red800, Primary.Red900, Primary.Red500, Accent.Red200, TextShade.WHITE);
+
+            if(Concesionario == null)
+            {
+                llenarTabla();
+                btnActualizar.Enabled = false;
+                btnDescartar.Enabled = false;
+                btnEliminar.Enabled = false;
+                btnNuevo.Enabled = false;
+                dtpFecha.Enabled = false;
+                txtCantidad.Enabled = false;
+            }
+
+            dtpFechaFin.MinDate = dtpFechaIni.Value;
+
+            using (var db = new Db())
+            {
+                var sitios = db.Taxis.Select(x => x.Sitio).Distinct();
+
+                foreach (var sitio in sitios)
+                {
+                    cmbSitios.Items.Add(sitio);
+                }
+            }
 
         }
 
@@ -113,6 +144,11 @@ namespace Ctm_Col
             btnNuevo.Text = "Guardar";
             btnActualizar.Enabled = false;
             btnEliminar.Enabled = false;
+
+            btnDescartar.Enabled = true;
+            btnNuevo.Enabled = true;
+            dtpFecha.Enabled = true;
+            txtCantidad.Enabled = true;
         }
 
         private void modoVer()
@@ -122,6 +158,13 @@ namespace Ctm_Col
             btnActualizar.Enabled = true;
             btnEliminar.Enabled = true;
             btnNuevo.Text = "Nuevo";
+
+            btnDescartar.Enabled = true;
+            btnNuevo.Enabled = true;
+            dtpFecha.Enabled = true;
+            txtCantidad.Enabled = true;
+
+
         }
 
         private void cargarDatos()
@@ -142,7 +185,26 @@ namespace Ctm_Col
             lvRecibos.Items.Clear();
             using (var db = new Db())
             {
-                var recibos = db.RecibosPoliza.Where(x => x.Concesionario.Id == Concesionario.Id).OrderByDescending(x=>x.Fecha);
+                IQueryable<ReciboPoliza> recibos;
+                if (Concesionario != null)
+                    recibos = db.RecibosPoliza.Where(x => x.Concesionario.Id == Concesionario.Id).OrderByDescending(x => x.Fecha);
+                else
+                    recibos = db.RecibosPoliza.OrderByDescending(x=>x.Fecha);
+
+                if (porFecha)
+                    recibos = recibos.Where(x => DbFunctions.TruncateTime(x.Fecha) >= DbFunctions.TruncateTime(dtpFechaIni.Value)
+                        && DbFunctions.TruncateTime(x.Fecha) <= DbFunctions.TruncateTime(dtpFechaFin.Value));
+
+                if (porSitio)
+                    recibos = recibos.Where(x => x.Concesionario.Taxi.Sitio == (string)cmbSitios.SelectedItem);
+
+                recibos = recibos.Where(x => x.Id.ToString().StartsWith(search) ||
+                    //x.Concesionario.Nombres.Contains(search) ||
+                    //x.Concesionario.ApellidoPaterno.StartsWith(search) ||
+                    //x.Concesionario.ApellidoMaterno.StartsWith(search) ||
+                    x.Concesionario.Taxi.NumeroEconomico.StartsWith(search) ||
+                    x.Concesionario.Taxi.Sitio.StartsWith(search)); 
+
                 foreach (var recibo in recibos)
                 {
                     var lvi = new ListViewItem(recibo.Id.ToString());
@@ -155,7 +217,7 @@ namespace Ctm_Col
                 }
             }
         }
-
+        
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             if (Recibo != null)
@@ -209,7 +271,7 @@ namespace Ctm_Col
             using(var db = new Db())
             {
                 var recibo = db.RecibosPoliza.Where(x => x.Id == id).First();
-                Recibo = recibo;
+                _recibo = recibo;
                 cargarDatos();
             }
         }
@@ -221,6 +283,53 @@ namespace Ctm_Col
                 if (db.RecibosPoliza.Where(x=>x.Concesionario.Id == Concesionario.Id).Any())
                     modoVer();
             }
+        }
+
+        private void chckSitio_CheckedChanged(object sender, EventArgs e)
+        {
+            filtrarSitio();
+        }
+        private void cmbSitios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filtrarSitio();
+        }
+
+        private void chckFecha_CheckedChanged(object sender, EventArgs e)
+        {
+            filtrarFecha();
+        }
+
+        private void dtpFechaIni_ValueChanged(object sender, EventArgs e)
+        {
+            dtpFechaFin.MinDate = dtpFechaIni.Value;
+            filtrarFecha();
+        }
+
+        private void dtpFechaFin_ValueChanged(object sender, EventArgs e)
+        {
+            filtrarFecha();
+        }
+
+        private void filtrarSitio()
+        {
+            if (cmbSitios.SelectedIndex < 0) return;
+
+            porSitio = chckSitio.Checked;
+
+            llenarTabla();
+        }
+
+        private void filtrarFecha()
+        {
+            porFecha = chckFecha.Checked;
+
+            llenarTabla();
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            search = txtBuscar.Text;
+            llenarTabla();
         }
     }
 }

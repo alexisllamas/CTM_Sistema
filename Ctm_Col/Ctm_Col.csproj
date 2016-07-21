@@ -114,6 +114,12 @@
     <Compile Include="CredencialForm.Designer.cs">
       <DependentUpon>CredencialForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenerarPolizaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerarPolizaForm.Designer.cs">
+      <DependentUpon>GenerarPolizaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,26 @@
     <Compile Include="Migrations\201607191813566_changes are changing.Designer.cs">
       <DependentUpon>201607191813566_changes are changing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607211514214_change are not changed.cs" />
+    <Compile Include="Migrations\201607211514214_change are not changed.Designer.cs">
+      <DependentUpon>201607211514214_change are not changed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607211515084_change are shit.cs" />
+    <Compile Include="Migrations\201607211515084_change are shit.Designer.cs">
+      <DependentUpon>201607211515084_change are shit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607211627278_Fix chofer model.cs" />
+    <Compile Include="Migrations\201607211627278_Fix chofer model.Designer.cs">
+      <DependentUpon>201607211627278_Fix chofer model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607211628284_delete choferes from taxi.cs" />
+    <Compile Include="Migrations\201607211628284_delete choferes from taxi.Designer.cs">
+      <DependentUpon>201607211628284_delete choferes from taxi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607212141316_add table RecibosDeducible.cs" />
+    <Compile Include="Migrations\201607212141316_add table RecibosDeducible.Designer.cs">
+      <DependentUpon>201607212141316_add table RecibosDeducible.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accidente.cs" />
     <Compile Include="Models\Ajuste.cs" />
@@ -162,6 +188,7 @@
     <Compile Include="Models\Credencial.cs" />
     <Compile Include="Db.cs" />
     <Compile Include="Models\Poliza.cs" />
+    <Compile Include="Models\ReciboDeducible.cs" />
     <Compile Include="Models\ReciboPoliza.cs" />
     <Compile Include="Models\ReciboCredencial.cs" />
     <Compile Include="Models\Taxi.cs" />
@@ -180,11 +207,23 @@
     <Compile Include="ConcesionarioForm.Designer.cs">
       <DependentUpon>ConcesionarioForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RecibosDeduciblelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecibosDeduciblelForm.Designer.cs">
+      <DependentUpon>RecibosDeduciblelForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RecibosCredencialForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RecibosCredencialForm.Designer.cs">
       <DependentUpon>RecibosCredencialForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RecibosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecibosForm.Designer.cs">
+      <DependentUpon>RecibosForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RecibosPolizaForm.cs">
       <SubType>Form</SubType>
@@ -197,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CredencialForm.resx">
       <DependentUpon>CredencialForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerarPolizaForm.resx">
+      <DependentUpon>GenerarPolizaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -225,6 +267,21 @@
     <EmbeddedResource Include="Migrations\201607191813566_changes are changing.resx">
       <DependentUpon>201607191813566_changes are changing.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607211514214_change are not changed.resx">
+      <DependentUpon>201607211514214_change are not changed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607211515084_change are shit.resx">
+      <DependentUpon>201607211515084_change are shit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607211627278_Fix chofer model.resx">
+      <DependentUpon>201607211627278_Fix chofer model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607211628284_delete choferes from taxi.resx">
+      <DependentUpon>201607211628284_delete choferes from taxi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607212141316_add table RecibosDeducible.resx">
+      <DependentUpon>201607212141316_add table RecibosDeducible.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PolizaForm.resx">
       <DependentUpon>PolizaForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,8 +297,14 @@
     <EmbeddedResource Include="ConcesionarioForm.resx">
       <DependentUpon>ConcesionarioForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RecibosDeduciblelForm.resx">
+      <DependentUpon>RecibosDeduciblelForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RecibosCredencialForm.resx">
       <DependentUpon>RecibosCredencialForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecibosForm.resx">
+      <DependentUpon>RecibosForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RecibosPolizaForm.resx">
       <DependentUpon>RecibosPolizaForm.cs</DependentUpon>

@@ -67,9 +67,7 @@ namespace Ctm_Col
                u.ApellidoPaterno.StartsWith(search) ||
                u.ApellidoMaterno.StartsWith(search) ||
                u.Telefono.StartsWith(search) ||
-               u.Municipio.StartsWith(search) ||
-               u.Taxi.NumeroEconomico.Equals(search) ||
-               u.Taxi.Sitio.StartsWith(search));
+               u.Municipio.StartsWith(search));
 
             foreach (var chofer in choferesFil)
             {
@@ -79,11 +77,7 @@ namespace Ctm_Col
                 lvi.SubItems.Add(chofer.ApellidoMaterno);
                 lvi.SubItems.Add(chofer.Municipio);
                 lvi.SubItems.Add(chofer.Telefono);
-                if (chofer.Taxi != null)
-                {
-                    lvi.SubItems.Add(chofer.Taxi.NumeroEconomico);
-                    lvi.SubItems.Add(chofer.Taxi.Sitio);
-                }
+                lvi.SubItems.Add(chofer.Licencia);
 
                 lvChoferes.Items.Add(lvi);
             }
@@ -101,11 +95,7 @@ namespace Ctm_Col
                 dtConNacimiento.Value = Chofer.FechaNacimiento;
                 cmbConMunicipio.SelectedItem = Chofer.Municipio;
                 txtConTelefono.Text = Chofer.Telefono;
-                if (Chofer.Taxi != null)
-                {
-                    txtNumero.Text = Chofer.Taxi.NumeroEconomico;
-                    txtSitio.Text = Chofer.Taxi.Sitio;
-                }
+                txtLicencia.Text = Chofer.Licencia;
             }
         }
 
@@ -126,20 +116,12 @@ namespace Ctm_Col
                     Colonia = txtConColonia.Text.Trim(),
                     FechaNacimiento = dtConNacimiento.Value,
                     Municipio = (string)cmbConMunicipio.SelectedItem,
-                    Telefono = txtConTelefono.Text.Trim()
+                    Telefono = txtConTelefono.Text.Trim(),
+                    Licencia = txtLicencia.Text.Trim()
                 };
 
                 using (var db = new Db())
                 {
-                    var taxi = db.Taxis.Where(x => x.NumeroEconomico == txtNumero.Text.Trim() && x.Sitio == txtSitio.Text.Trim());
-
-                    if (taxi.Any())
-                        chofer.Taxi = taxi.First();
-                    else
-                    {
-                        MessageBox.Show("Ese taxi no está registrado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
 
                     db.Choferes.Add(chofer);
                     db.SaveChanges();
@@ -169,16 +151,6 @@ namespace Ctm_Col
                     chofer.FechaNacimiento = dtConNacimiento.Value;
                     chofer.Municipio = (string)cmbConMunicipio.SelectedItem;
                     chofer.Telefono = txtConTelefono.Text.Trim();
-
-                    var taxi = db.Taxis.Where(x => x.NumeroEconomico == txtNumero.Text.Trim() && x.Sitio == txtSitio.Text.Trim());
-
-                    if (taxi.Any())
-                        chofer.Taxi = taxi.First();
-                    else
-                    {
-                        MessageBox.Show("Ese taxi no está registrado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
 
                     db.SaveChanges();
 
@@ -247,12 +219,6 @@ namespace Ctm_Col
                     case 5:
                         cargarDatos(db.Choferes.OrderBy(x => x.Telefono));
                         break;
-                    case 6:
-                        cargarDatos(db.Choferes.OrderBy(x => x.Taxi.NumeroEconomico));
-                        break;
-                    case 7:
-                        cargarDatos(db.Choferes.OrderBy(x => x.Taxi.Sitio));
-                        break;
                 }
             }
         }
@@ -300,9 +266,7 @@ namespace Ctm_Col
             dtConNacimiento.Value = new DateTime(1980, 1, 1);
             txtConTelefono.Text = "";
             cmbConMunicipio.SelectedIndex = -1;
-            txtNumero.Text = "";
-            txtSitio.Text = "";
-
+            txtLicencia.Text = "";
             ActiveControl = txtNombre;
 
             btnNuevo.Text = "Guardar";
@@ -335,6 +299,56 @@ namespace Ctm_Col
             {
                 MessageBox.Show("Selecciona un Chofer primero", "¡Alerta!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnCredencial_Click(object sender, EventArgs e)
+        {
+            using (var db = new Db())
+            {
+                var chofer = db.Choferes.Where(x => x.Id == Chofer.Id).First();
+                if (chofer.Credencial == null)
+                {
+                    DialogResult button = MessageBox.Show("Sin credencial, ¿Tramitar Credencial?", "Hola", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (button == DialogResult.Yes)
+                    {
+                        chofer.Credencial = new Credencial
+                        {
+                            FechaInicioVigencia = DateTime.Today,
+                            FechaFinalVigencia = DateTime.Today.AddYears(1)
+                        };
+                        db.SaveChanges();
+                        var recibo = new ReciboCredencial
+                        {
+                            Fecha = DateTime.Today,
+                            Cantidad = 200
+                        };
+                        chofer.RecibosCredencial.Add(recibo);
+                        db.SaveChanges();
+                        DialogResult reciboImprimir = MessageBox.Show("¿Imprimir recibo?", "Hola", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (reciboImprimir == DialogResult.Yes)
+                        {
+
+                        }
+                        var credencialForm = new CredencialForm(Chofer);
+                        credencialForm.ShowDialog();
+                    }
+                }
+                else
+                {
+                    var credencialForm = new CredencialForm(Chofer);
+
+                    credencialForm.ShowDialog();
+                }
+            }
+        }
+
+        private void btnReciboDeducible_Click(object sender, EventArgs e)
+        {
+            var recibosForm = new RecibosDeducibleForm();
+            recibosForm.Chofer = Chofer;
+            recibosForm.ShowDialog();
         }
     }
 }

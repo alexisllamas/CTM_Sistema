@@ -29,5 +29,19 @@ namespace Ctm_Col
             var cho = new ChoferForm();
             cho.Show();
         }
+
+        private void txtPolizas_Click(object sender, EventArgs e)
+        {
+            var genPolizasForm = new GenerarPolizaForm();
+
+            genPolizasForm.Show();
+        }
+
+        private void btnRecibos_Click(object sender, EventArgs e)
+        {
+            var recibosForm = new RecibosForm();
+
+            recibosForm.Show();
+        }
     }
 }
