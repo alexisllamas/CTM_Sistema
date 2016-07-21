@@ -45,17 +45,17 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtpFechaIni = new System.Windows.Forms.DateTimePicker();
-            this.chckFecha = new MaterialSkin.Controls.MaterialCheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtBuscar = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
+            this.txtBuscar = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpFechaIni = new System.Windows.Forms.DateTimePicker();
+            this.chckFecha = new MaterialSkin.Controls.MaterialCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -232,7 +232,7 @@
             this.lvRecibos.GridLines = true;
             this.lvRecibos.Location = new System.Drawing.Point(12, 343);
             this.lvRecibos.Name = "lvRecibos";
-            this.lvRecibos.Size = new System.Drawing.Size(437, 97);
+            this.lvRecibos.Size = new System.Drawing.Size(437, 167);
             this.lvRecibos.TabIndex = 58;
             this.lvRecibos.UseCompatibleStateImageBehavior = false;
             this.lvRecibos.View = System.Windows.Forms.View.Details;
@@ -252,6 +252,21 @@
             // 
             this.columnHeader7.Text = "Cantidad";
             this.columnHeader7.Width = 89;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Nombre(s)";
+            this.columnHeader1.Width = 78;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Apellido Paterno";
+            this.columnHeader2.Width = 92;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Apellido Materno";
+            this.columnHeader3.Width = 91;
             // 
             // groupBox1
             // 
@@ -280,6 +295,17 @@
             this.label5.TabIndex = 84;
             this.label5.Text = "Fecha final";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Enabled = false;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(2, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 12);
+            this.label3.TabIndex = 82;
+            this.label3.Text = "Buscar:";
+            // 
             // dtpFechaFin
             // 
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -288,6 +314,17 @@
             this.dtpFechaFin.Size = new System.Drawing.Size(86, 20);
             this.dtpFechaFin.TabIndex = 83;
             this.dtpFechaFin.ValueChanged += new System.EventHandler(this.dtpFechaFin_ValueChanged);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Depth = 0;
+            this.txtBuscar.Hint = "Buscar...";
+            this.txtBuscar.Location = new System.Drawing.Point(3, 35);
+            this.txtBuscar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(144, 23);
+            this.txtBuscar.TabIndex = 81;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // label2
             // 
@@ -326,48 +363,11 @@
             this.chckFecha.UseVisualStyleBackColor = true;
             this.chckFecha.CheckedChanged += new System.EventHandler(this.chckFecha_CheckedChanged);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Enabled = false;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(2, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 12);
-            this.label3.TabIndex = 82;
-            this.label3.Text = "Buscar:";
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Depth = 0;
-            this.txtBuscar.Hint = "Buscar...";
-            this.txtBuscar.Location = new System.Drawing.Point(3, 35);
-            this.txtBuscar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(144, 23);
-            this.txtBuscar.TabIndex = 81;
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Nombre(s)";
-            this.columnHeader1.Width = 78;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Apellido Paterno";
-            this.columnHeader2.Width = 92;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Apellido Materno";
-            this.columnHeader3.Width = 91;
-            // 
             // RecibosCredencialForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 471);
+            this.ClientSize = new System.Drawing.Size(466, 522);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.txtId);

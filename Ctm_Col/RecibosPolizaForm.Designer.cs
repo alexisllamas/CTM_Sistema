@@ -38,14 +38,10 @@
             this.txtCantidad = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtNombre = new Ctm_Col.MaterialTextBox();
-            this.txtApPaterno = new Ctm_Col.MaterialTextBox();
-            this.txtApMaterno = new Ctm_Col.MaterialTextBox();
             this.btnActualizar = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnNuevo = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnEliminar = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnDescartar = new MaterialSkin.Controls.MaterialFlatButton();
-            this.txtId = new Ctm_Col.MaterialTextBox();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBuscar = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -58,6 +54,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtpFechaIni = new System.Windows.Forms.DateTimePicker();
             this.chckFecha = new MaterialSkin.Controls.MaterialCheckBox();
+            this.txtId = new Ctm_Col.MaterialTextBox();
+            this.txtApMaterno = new Ctm_Col.MaterialTextBox();
+            this.txtApPaterno = new Ctm_Col.MaterialTextBox();
+            this.txtNombre = new Ctm_Col.MaterialTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -75,7 +75,7 @@
             this.lvRecibos.GridLines = true;
             this.lvRecibos.Location = new System.Drawing.Point(14, 399);
             this.lvRecibos.Name = "lvRecibos";
-            this.lvRecibos.Size = new System.Drawing.Size(443, 97);
+            this.lvRecibos.Size = new System.Drawing.Size(443, 148);
             this.lvRecibos.TabIndex = 0;
             this.lvRecibos.UseCompatibleStateImageBehavior = false;
             this.lvRecibos.View = System.Windows.Forms.View.Details;
@@ -149,33 +149,6 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Cantidad";
             // 
-            // txtNombre
-            // 
-            this.txtNombre.Enabled = false;
-            this.txtNombre.Location = new System.Drawing.Point(77, 72);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Placeholder = "Nombre(s)";
-            this.txtNombre.Size = new System.Drawing.Size(85, 48);
-            this.txtNombre.TabIndex = 16;
-            // 
-            // txtApPaterno
-            // 
-            this.txtApPaterno.Enabled = false;
-            this.txtApPaterno.Location = new System.Drawing.Point(168, 72);
-            this.txtApPaterno.Name = "txtApPaterno";
-            this.txtApPaterno.Placeholder = "Apellido Paterno";
-            this.txtApPaterno.Size = new System.Drawing.Size(114, 48);
-            this.txtApPaterno.TabIndex = 17;
-            // 
-            // txtApMaterno
-            // 
-            this.txtApMaterno.Enabled = false;
-            this.txtApMaterno.Location = new System.Drawing.Point(288, 72);
-            this.txtApMaterno.Name = "txtApMaterno";
-            this.txtApMaterno.Placeholder = "Apellido Materno";
-            this.txtApMaterno.Size = new System.Drawing.Size(126, 48);
-            this.txtApMaterno.TabIndex = 18;
-            // 
             // btnActualizar
             // 
             this.btnActualizar.AutoSize = true;
@@ -240,15 +213,6 @@
             this.btnDescartar.UseVisualStyleBackColor = true;
             this.btnDescartar.Click += new System.EventHandler(this.btnDescartar_Click);
             // 
-            // txtId
-            // 
-            this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(14, 72);
-            this.txtId.Name = "txtId";
-            this.txtId.Placeholder = "ID";
-            this.txtId.Size = new System.Drawing.Size(46, 48);
-            this.txtId.TabIndex = 56;
-            // 
             // materialFlatButton1
             // 
             this.materialFlatButton1.AutoSize = true;
@@ -290,7 +254,7 @@
             // 
             this.chckSitio.AutoSize = true;
             this.chckSitio.Depth = 0;
-            this.chckSitio.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chckSitio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.chckSitio.Location = new System.Drawing.Point(164, 27);
             this.chckSitio.Margin = new System.Windows.Forms.Padding(0);
             this.chckSitio.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -387,7 +351,7 @@
             // 
             this.chckFecha.AutoSize = true;
             this.chckFecha.Depth = 0;
-            this.chckFecha.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chckFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.chckFecha.Location = new System.Drawing.Point(164, 68);
             this.chckFecha.Margin = new System.Windows.Forms.Padding(0);
             this.chckFecha.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -400,11 +364,47 @@
             this.chckFecha.UseVisualStyleBackColor = true;
             this.chckFecha.CheckedChanged += new System.EventHandler(this.chckFecha_CheckedChanged);
             // 
+            // txtId
+            // 
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(14, 72);
+            this.txtId.Name = "txtId";
+            this.txtId.Placeholder = "ID";
+            this.txtId.Size = new System.Drawing.Size(46, 48);
+            this.txtId.TabIndex = 56;
+            // 
+            // txtApMaterno
+            // 
+            this.txtApMaterno.Enabled = false;
+            this.txtApMaterno.Location = new System.Drawing.Point(288, 72);
+            this.txtApMaterno.Name = "txtApMaterno";
+            this.txtApMaterno.Placeholder = "Apellido Materno";
+            this.txtApMaterno.Size = new System.Drawing.Size(126, 48);
+            this.txtApMaterno.TabIndex = 18;
+            // 
+            // txtApPaterno
+            // 
+            this.txtApPaterno.Enabled = false;
+            this.txtApPaterno.Location = new System.Drawing.Point(168, 72);
+            this.txtApPaterno.Name = "txtApPaterno";
+            this.txtApPaterno.Placeholder = "Apellido Paterno";
+            this.txtApPaterno.Size = new System.Drawing.Size(114, 48);
+            this.txtApPaterno.TabIndex = 17;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Enabled = false;
+            this.txtNombre.Location = new System.Drawing.Point(77, 72);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Placeholder = "Nombre(s)";
+            this.txtNombre.Size = new System.Drawing.Size(85, 48);
+            this.txtNombre.TabIndex = 16;
+            // 
             // RecibosPolizaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 520);
+            this.ClientSize = new System.Drawing.Size(477, 559);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.txtId);
@@ -422,7 +422,7 @@
             this.Controls.Add(this.lvRecibos);
             this.Name = "RecibosPolizaForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Recibo Póliza";
+            this.Text = "Recibos Póliza";
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

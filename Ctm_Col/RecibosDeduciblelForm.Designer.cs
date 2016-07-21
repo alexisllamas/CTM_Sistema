@@ -47,6 +47,8 @@
             this.Numero = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtSitio = new Ctm_Col.MaterialTextBox();
+            this.txtNumero = new Ctm_Col.MaterialTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,8 +60,6 @@
             this.chckSitio = new MaterialSkin.Controls.MaterialCheckBox();
             this.lblFecha = new System.Windows.Forms.Label();
             this.cmbSitios = new System.Windows.Forms.ComboBox();
-            this.txtSitio = new Ctm_Col.MaterialTextBox();
-            this.txtNumero = new Ctm_Col.MaterialTextBox();
             this.txtId = new Ctm_Col.MaterialTextBox();
             this.txtApMaterno = new Ctm_Col.MaterialTextBox();
             this.txtApPaterno = new Ctm_Col.MaterialTextBox();
@@ -264,6 +264,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Taxi";
             // 
+            // txtSitio
+            // 
+            this.txtSitio.Location = new System.Drawing.Point(72, 15);
+            this.txtSitio.Name = "txtSitio";
+            this.txtSitio.Placeholder = "Sitio";
+            this.txtSitio.Size = new System.Drawing.Size(121, 48);
+            this.txtSitio.TabIndex = 1;
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(2, 15);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Placeholder = "Número";
+            this.txtNumero.Size = new System.Drawing.Size(64, 48);
+            this.txtNumero.TabIndex = 0;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label5);
@@ -349,7 +365,7 @@
             // 
             this.chckFecha.AutoSize = true;
             this.chckFecha.Depth = 0;
-            this.chckFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.chckFecha.Font = new System.Drawing.Font("Roboto", 10F);
             this.chckFecha.Location = new System.Drawing.Point(164, 68);
             this.chckFecha.Margin = new System.Windows.Forms.Padding(0);
             this.chckFecha.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -366,7 +382,7 @@
             // 
             this.chckSitio.AutoSize = true;
             this.chckSitio.Depth = 0;
-            this.chckSitio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.chckSitio.Font = new System.Drawing.Font("Roboto", 10F);
             this.chckSitio.Location = new System.Drawing.Point(164, 27);
             this.chckSitio.Margin = new System.Windows.Forms.Padding(0);
             this.chckSitio.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -399,22 +415,6 @@
             this.cmbSitios.Size = new System.Drawing.Size(121, 21);
             this.cmbSitios.TabIndex = 78;
             this.cmbSitios.SelectedIndexChanged += new System.EventHandler(this.cmbSitios_SelectedIndexChanged);
-            // 
-            // txtSitio
-            // 
-            this.txtSitio.Location = new System.Drawing.Point(72, 15);
-            this.txtSitio.Name = "txtSitio";
-            this.txtSitio.Placeholder = "Sitio";
-            this.txtSitio.Size = new System.Drawing.Size(121, 48);
-            this.txtSitio.TabIndex = 1;
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.Location = new System.Drawing.Point(2, 15);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Placeholder = "Número";
-            this.txtNumero.Size = new System.Drawing.Size(64, 48);
-            this.txtNumero.TabIndex = 0;
             // 
             // txtId
             // 
@@ -474,7 +474,7 @@
             this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.lvRecibos);
             this.Name = "RecibosDeducibleForm";
-            this.Text = " ";
+            this.Text = " Recibos Deducible";
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
