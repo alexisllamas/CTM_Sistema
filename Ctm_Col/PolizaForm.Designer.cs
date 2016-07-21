@@ -28,13 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.materialTextBox1 = new Ctm_Col.MaterialTextBox();
             this.SuspendLayout();
+            // 
+            // materialTextBox1
+            // 
+            this.materialTextBox1.Location = new System.Drawing.Point(184, 140);
+            this.materialTextBox1.Name = "materialTextBox1";
+            this.materialTextBox1.Placeholder = "";
+            this.materialTextBox1.Size = new System.Drawing.Size(172, 48);
+            this.materialTextBox1.TabIndex = 0;
+            this.materialTextBox1.Text = "materialTextBox1";
             // 
             // PolizaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 300);
+            this.ClientSize = new System.Drawing.Size(506, 328);
+            this.Controls.Add(this.materialTextBox1);
             this.Name = "PolizaForm";
             this.Text = "Póliza";
             this.ResumeLayout(false);
@@ -42,5 +53,7 @@
         }
 
         #endregion
+
+        private MaterialTextBox materialTextBox1;
     }
 }
