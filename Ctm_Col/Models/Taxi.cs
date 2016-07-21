@@ -7,6 +7,7 @@ namespace Ctm_Col.Models
 {
     public class Taxi
     {
+        [ForeignKey("Concesionario")]
         public int Id { get; set; }
         public string Sitio { get; set; }
         public string NumeroEconomico { get; set; }
@@ -19,7 +20,6 @@ namespace Ctm_Col.Models
 
         public virtual ICollection<Chofer> Choferes { get; set; }
 
-        [Required]
-        public Concesionario Concesionario { get; set; }
+        public virtual Concesionario Concesionario { get; set; }
     }
 }

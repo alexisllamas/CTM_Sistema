@@ -6,14 +6,14 @@ namespace Ctm_Col.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Ctm_Col.Models.Db>
+    internal sealed class Configuration : DbMigrationsConfiguration<Ctm_Col.Db>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Ctm_Col.Models.Db context)
+        protected override void Seed(Ctm_Col.Db context)
         {
 
         }

@@ -1,5 +1,6 @@
-namespace Ctm_Col.Models
+namespace Ctm_Col
 {
+    using Models;
     using System;
     using System.Data.Entity;
     using System.Linq;

@@ -16,7 +16,7 @@ namespace Ctm_Col
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UsuarioFormulario());
+            Application.Run(new MainForm());
         }
     }
 }
