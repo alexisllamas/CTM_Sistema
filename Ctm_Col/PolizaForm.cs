@@ -15,10 +15,10 @@ namespace Ctm_Col
 {
     public partial class PolizaForm : MaterialForm
     {
-        private Concesionario _concesionario;
+        private Models.Concesionario _concesionario;
         private Poliza _poliza;
 
-        public PolizaForm(Concesionario conce)
+        public PolizaForm(Models.Concesionario conce)
         {
             InitializeComponent();
 

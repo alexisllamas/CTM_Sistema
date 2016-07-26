@@ -10,7 +10,7 @@ namespace Ctm_Col.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+
         }
 
         protected override void Seed(Ctm_Col.Db context)

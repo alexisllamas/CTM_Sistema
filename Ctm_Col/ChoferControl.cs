@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace Ctm_Col
 {
-    public partial class ChoferForm : MaterialForm
+    public partial class ChoferControl : UserControl
     {
         private string search = "";
-        private Chofer _chofer;
+        private Models.Chofer _chofer;
         private bool isModoVer;
 
         private Chofer Chofer
@@ -38,14 +38,9 @@ namespace Ctm_Col
                 }
             }
         }
-        public ChoferForm()
+        public ChoferControl()
         {
             InitializeComponent();
-
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo800, Primary.Indigo900, Primary.Indigo500, Accent.Indigo200, TextShade.WHITE);
 
             using (var db = new Db())
             {
@@ -59,7 +54,7 @@ namespace Ctm_Col
             }
         }
 
-        private void cargarDatos(IOrderedQueryable<Chofer> choferes)
+        private void cargarDatos(IOrderedQueryable<Models.Chofer> choferes)
         {
             lvChoferes.Items.Clear();
             var choferesFil = choferes.Where(u => u.Id.ToString().StartsWith(search) ||
@@ -107,7 +102,7 @@ namespace Ctm_Col
             }
             else
             {
-                var chofer = new Chofer
+                var chofer = new Models.Chofer
                 {
                     Nombres = txtNombre.Text.Trim(),
                     ApellidoPaterno = txtApPaterno.Text.Trim(),
@@ -170,12 +165,14 @@ namespace Ctm_Col
                 using (var db = new Db())
                 {
                     var chofer = db.Choferes.Where(u => u.Id == Chofer.Id).First();
-                    DialogResult boton = MessageBox.Show("¿Quieres eliminar a " + chofer.Nombres + " " + chofer.ApellidoPaterno + "?", "Alerta", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
+                    DialogResult boton = MessageBox.Show(string.Format("¿Quieres eliminar a {0} {1}?", 
+                                                             chofer.Nombres, 
+                                                             chofer.ApellidoPaterno), "Alerta", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
                     if (boton == DialogResult.Yes)
                     {
                         if (chofer.RecibosCredencial.Any())
                         {
-                            foreach (var recibos in db.RecibosCredencial.Where(x => x.Chofer.Id == Chofer.Id))
+                            foreach (var recibos in db.RecibosCredencial.Where((System.Linq.Expressions.Expression<Func<ReciboCredencial, bool>>)(x => x.Chofer.Id == Chofer.Id)))
                             {
                                 db.RecibosCredencial.Remove(recibos);
                             }
@@ -289,66 +286,84 @@ namespace Ctm_Col
 
         private void btnReciboCredencial_Click(object sender, EventArgs e)
         {
-            var recibosForm = new RecibosCredencialForm();
-
             if (isModoVer)
             {
-                recibosForm.Chofer = Chofer;
-                recibosForm.ShowDialog();
-            } else
-            {
-                MessageBox.Show("Selecciona un Chofer primero", "¡Alerta!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                var reciboForm = new ReciboCredencialForm(Chofer);
+                reciboForm.ShowDialog();
+                return;
             }
+            MessageBox.Show("Selecciona un Chofer primero", "¡Alerta!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void btnCredencial_Click(object sender, EventArgs e)
         {
-            using (var db = new Db())
+            if (!isModoVer)
             {
-                var chofer = db.Choferes.Where(x => x.Id == Chofer.Id).First();
-                if (chofer.Credencial == null)
+                MessageBox.Show("Selecciona un Chofer primero", "¡Alerta!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                var recibosForm = new RecibosCredencialControl();
+                using (var db = new Db())
                 {
-                    DialogResult button = MessageBox.Show("Sin credencial, ¿Tramitar Credencial?", "Hola", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (button == DialogResult.Yes)
+                    var chofer = db.Choferes.Where(x => x.Id == Chofer.Id).First();
+                    if (chofer.Credencial == null)
                     {
-                        chofer.Credencial = new Credencial
-                        {
-                            FechaInicioVigencia = DateTime.Today,
-                            FechaFinalVigencia = DateTime.Today.AddYears(1)
-                        };
-                        db.SaveChanges();
-                        var recibo = new ReciboCredencial
-                        {
-                            Fecha = DateTime.Today,
-                            Cantidad = 200
-                        };
-                        chofer.RecibosCredencial.Add(recibo);
-                        db.SaveChanges();
-                        DialogResult reciboImprimir = MessageBox.Show("¿Imprimir recibo?", "Hola", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult button = MessageBox.Show("Sin credencial, ¿Tramitar Credencial?", "Hola", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                        if (reciboImprimir == DialogResult.Yes)
+                        if (button == DialogResult.Yes)
                         {
+                            chofer.Credencial = new Credencial
+                            {
+                                FechaInicioVigencia = DateTime.Today,
+                                FechaFinalVigencia = DateTime.Today.AddYears(1)
+                            };
+                            db.SaveChanges();
+                            var recibo = new ReciboCredencial
+                            {
+                                Fecha = DateTime.Today,
+                                Cantidad = 200
+                            };
+                            chofer.RecibosCredencial.Add(recibo);
+                            db.SaveChanges();
+                            DialogResult reciboImprimir = MessageBox.Show("¿Imprimir recibo?", "Hola", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                            if (reciboImprimir == DialogResult.Yes)
+                            {
+
+                            }
+                            var credencialForm = new CredencialForm(Chofer);
+                            credencialForm.ShowDialog();
                         }
-                        var credencialForm = new CredencialForm(Chofer);
-                        credencialForm.ShowDialog();
                     }
-                }
-                else
-                {
-                    var credencialForm = new CredencialForm(Chofer);
+                    else
+                    {
+                        var credencialForm = new CredencialForm(Chofer);
 
-                    credencialForm.ShowDialog();
+                        credencialForm.Show();
+                    }
                 }
             }
         }
 
         private void btnReciboDeducible_Click(object sender, EventArgs e)
         {
-            var recibosForm = new RecibosDeducibleForm();
-            recibosForm.Chofer = Chofer;
-            recibosForm.ShowDialog();
+            if (isModoVer)
+            {
+                var recibosForm = new ReciboDeducibleForm(Chofer);
+                recibosForm.ShowDialog();
+                return;
+            }
+            MessageBox.Show("Selecciona un Chofer primero", "¡Alerta!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+        }
+
+        private void lvChoferes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                btnEliminar_Click(null, null);
+            }
         }
     }
 }

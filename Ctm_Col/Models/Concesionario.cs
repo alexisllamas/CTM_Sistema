@@ -11,6 +11,7 @@ namespace Ctm_Col.Models
         public string Rfc { get; set; }
         public virtual Poliza Poliza { get; set; }
         public virtual ICollection<ReciboPoliza> ReciboPoliza { get; set; }
+        public virtual ICollection<ReciboPrimerIngreso> ReciboPrimerIngreso { get; set; }
         public virtual Taxi Taxi { get; set; }
     }
 }

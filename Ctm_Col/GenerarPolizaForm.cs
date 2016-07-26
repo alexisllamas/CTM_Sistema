@@ -52,12 +52,15 @@ namespace Ctm_Col
             {
                 name = " todos";
             }
-            DialogResult advertencia = MessageBox.Show("¿Quieres generar las pólizas de" + name + "?", "Hola", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            DialogResult advertencia = MessageBox.Show(string.Format("¿Quieres generar las pólizas de{0}?", name), 
+                                           "Hola", 
+                                           MessageBoxButtons.YesNoCancel, 
+                                           MessageBoxIcon.Question);
             if (advertencia == DialogResult.Yes)
             {
                 using (var db = new Db())
                 {
-                    IQueryable<Concesionario> concesionarios;
+                    IQueryable<Models.Concesionario> concesionarios;
                     if (boton.Name == "btnGenerar")
                     {
                         concesionarios = db.Concesionarios.Where(x => x.Taxi.Sitio == (string)cmbSitios.SelectedItem);

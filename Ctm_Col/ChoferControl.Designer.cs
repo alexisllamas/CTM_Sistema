@@ -1,6 +1,6 @@
 ﻿namespace Ctm_Col
 {
-    partial class ChoferForm
+    partial class ChoferControl
     {
         /// <summary>
         /// Required designer variable.
@@ -99,7 +99,7 @@
             this.btnActualizar.AutoSize = true;
             this.btnActualizar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnActualizar.Depth = 0;
-            this.btnActualizar.Location = new System.Drawing.Point(101, 366);
+            this.btnActualizar.Location = new System.Drawing.Point(89, 286);
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnActualizar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnActualizar.Name = "btnActualizar";
@@ -115,7 +115,7 @@
             this.btnNuevo.AutoSize = true;
             this.btnNuevo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnNuevo.Depth = 0;
-            this.btnNuevo.Location = new System.Drawing.Point(201, 366);
+            this.btnNuevo.Location = new System.Drawing.Point(189, 286);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNuevo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNuevo.Name = "btnNuevo";
@@ -131,7 +131,7 @@
             this.btnEliminar.AutoSize = true;
             this.btnEliminar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnEliminar.Depth = 0;
-            this.btnEliminar.Location = new System.Drawing.Point(372, 366);
+            this.btnEliminar.Location = new System.Drawing.Point(360, 286);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminar.Name = "btnEliminar";
@@ -148,7 +148,7 @@
             this.btnCancelar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCancelar.Depth = 0;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(274, 366);
+            this.btnCancelar.Location = new System.Drawing.Point(262, 286);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -164,7 +164,7 @@
             this.label3.AutoSize = true;
             this.label3.Enabled = false;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 518);
+            this.label3.Location = new System.Drawing.Point(3, 438);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 12);
             this.label3.TabIndex = 74;
@@ -174,16 +174,24 @@
             // 
             this.txtBuscar.Depth = 0;
             this.txtBuscar.Hint = "Buscar...";
-            this.txtBuscar.Location = new System.Drawing.Point(14, 533);
+            this.txtBuscar.Location = new System.Drawing.Point(2, 453);
             this.txtBuscar.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.PasswordChar = '\0';
+            this.txtBuscar.SelectedText = "";
+            this.txtBuscar.SelectionLength = 0;
+            this.txtBuscar.SelectionStart = 0;
             this.txtBuscar.Size = new System.Drawing.Size(144, 23);
             this.txtBuscar.TabIndex = 68;
+            this.txtBuscar.UseSystemPasswordChar = false;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // lvChoferes
             // 
             this.lvChoferes.AllowColumnReorder = true;
+            this.lvChoferes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvChoferes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -194,15 +202,16 @@
             this.columnHeader5});
             this.lvChoferes.FullRowSelect = true;
             this.lvChoferes.GridLines = true;
-            this.lvChoferes.Location = new System.Drawing.Point(14, 568);
+            this.lvChoferes.Location = new System.Drawing.Point(5, 491);
             this.lvChoferes.MultiSelect = false;
             this.lvChoferes.Name = "lvChoferes";
-            this.lvChoferes.Size = new System.Drawing.Size(585, 153);
+            this.lvChoferes.Size = new System.Drawing.Size(611, 153);
             this.lvChoferes.TabIndex = 67;
             this.lvChoferes.UseCompatibleStateImageBehavior = false;
             this.lvChoferes.View = System.Windows.Forms.View.Details;
             this.lvChoferes.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvChoferes_ColumnClick);
             this.lvChoferes.SelectedIndexChanged += new System.EventHandler(this.lvChoferes_SelectedIndexChanged);
+            this.lvChoferes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvChoferes_KeyDown);
             // 
             // columnHeader1
             // 
@@ -237,7 +246,7 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "Licencia";
-            this.columnHeader5.Width = 97;
+            this.columnHeader5.Width = 123;
             // 
             // groupBox2
             // 
@@ -246,7 +255,7 @@
             this.groupBox2.Controls.Add(this.lblFecha);
             this.groupBox2.Controls.Add(this.txtApMaterno);
             this.groupBox2.Controls.Add(this.dtConNacimiento);
-            this.groupBox2.Location = new System.Drawing.Point(63, 158);
+            this.groupBox2.Location = new System.Drawing.Point(51, 78);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(484, 73);
             this.groupBox2.TabIndex = 69;
@@ -307,7 +316,7 @@
             this.groupBox1.Controls.Add(this.txtConCalle);
             this.groupBox1.Controls.Add(this.txtConColonia);
             this.groupBox1.Controls.Add(this.cmbConMunicipio);
-            this.groupBox1.Location = new System.Drawing.Point(63, 247);
+            this.groupBox1.Location = new System.Drawing.Point(51, 167);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(484, 97);
             this.groupBox1.TabIndex = 70;
@@ -351,6 +360,7 @@
             // 
             // cmbConMunicipio
             // 
+            this.cmbConMunicipio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbConMunicipio.FormattingEnabled = true;
             this.cmbConMunicipio.Items.AddRange(new object[] {
             "Armería",
@@ -367,12 +377,11 @@
             this.cmbConMunicipio.Name = "cmbConMunicipio";
             this.cmbConMunicipio.Size = new System.Drawing.Size(121, 21);
             this.cmbConMunicipio.TabIndex = 9;
-            this.cmbConMunicipio.Text = "Municipio";
             // 
             // txtConId
             // 
             this.txtConId.Enabled = false;
-            this.txtConId.Location = new System.Drawing.Point(70, 88);
+            this.txtConId.Location = new System.Drawing.Point(58, 8);
             this.txtConId.Name = "txtConId";
             this.txtConId.Placeholder = "Id";
             this.txtConId.Size = new System.Drawing.Size(79, 48);
@@ -381,7 +390,7 @@
             // 
             // txtLicencia
             // 
-            this.txtLicencia.Location = new System.Drawing.Point(294, 88);
+            this.txtLicencia.Location = new System.Drawing.Point(282, 8);
             this.txtLicencia.Name = "txtLicencia";
             this.txtLicencia.Placeholder = "Licencia";
             this.txtLicencia.Size = new System.Drawing.Size(230, 48);
@@ -391,7 +400,7 @@
             // 
             this.grpboxCredencial.Controls.Add(this.btnCredencial);
             this.grpboxCredencial.Controls.Add(this.btnReciboCredencial);
-            this.grpboxCredencial.Location = new System.Drawing.Point(39, 411);
+            this.grpboxCredencial.Location = new System.Drawing.Point(27, 331);
             this.grpboxCredencial.Name = "grpboxCredencial";
             this.grpboxCredencial.Size = new System.Drawing.Size(200, 100);
             this.grpboxCredencial.TabIndex = 82;
@@ -402,7 +411,7 @@
             // 
             this.groupBox3.Controls.Add(this.btnAccidentes);
             this.groupBox3.Controls.Add(this.btnReciboDeducible);
-            this.groupBox3.Location = new System.Drawing.Point(338, 411);
+            this.groupBox3.Location = new System.Drawing.Point(326, 331);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(200, 100);
             this.groupBox3.TabIndex = 83;
@@ -434,11 +443,10 @@
             this.btnReciboDeducible.UseVisualStyleBackColor = true;
             this.btnReciboDeducible.Click += new System.EventHandler(this.btnReciboDeducible_Click);
             // 
-            // ChoferForm
+            // ChoferControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 733);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.grpboxCredencial);
             this.Controls.Add(this.txtLicencia);
@@ -452,9 +460,9 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtConId);
-            this.Name = "ChoferForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Choferes";
+            this.Name = "ChoferControl";
+            this.Size = new System.Drawing.Size(619, 644);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvChoferes_KeyDown);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);

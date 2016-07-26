@@ -15,10 +15,10 @@ namespace Ctm_Col
 {
     public partial class CredencialForm : MaterialForm
     {
-        private Chofer _chofer;
+        private Models.Chofer _chofer;
         private Credencial _credencial;
 
-        public CredencialForm(Chofer chofer)
+        public CredencialForm(Models.Chofer chofer)
         {
             InitializeComponent();
 
@@ -27,6 +27,7 @@ namespace Ctm_Col
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo800, Primary.Indigo900, Primary.Indigo500, Accent.Indigo200, TextShade.WHITE);
 
+            Console.WriteLine(chofer.Nombres);
             _chofer = chofer;
 
             using (var db = new Db())
@@ -133,6 +134,11 @@ namespace Ctm_Col
         private void expirada()
         {
             btnImprimir.Enabled = false;
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            Imprimir.Credencial(_credencial, this);
         }
     }
 }

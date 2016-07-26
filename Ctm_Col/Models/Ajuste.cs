@@ -14,8 +14,12 @@ namespace Ctm_Col.Models
         public DateTime FechaInicioVigencia { get; set; }
         [Column(TypeName = "Date")]
         public DateTime FechaFinalVigencia { get; set; }
+        public double PrimaNeta { get; set; }
+        public double IVA { get; set; }
+        public double PrimaTotal { get; set; }
         public virtual ICollection<Accidente> Accidentes { get; set; }
         public virtual ICollection<ReciboCredencial> RecibosCredencial { get; set; }
         public virtual ICollection<ReciboPoliza> RecibosPoliza { get; set; }
+        public virtual ICollection<ReciboPrimerIngreso> RecibosPrimerIngreso { get; set; }
     }
 }

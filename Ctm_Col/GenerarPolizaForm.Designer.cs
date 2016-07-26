@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerarPolizaForm));
             this.cmbSitios = new System.Windows.Forms.ComboBox();
             this.lblFecha = new System.Windows.Forms.Label();
             this.btnGenerar = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -165,6 +166,7 @@
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.cmbSitios);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GenerarPolizaForm";
             this.Text = "Generar Pólizas";
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();

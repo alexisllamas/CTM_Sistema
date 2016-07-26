@@ -4,7 +4,7 @@ namespace Ctm_Col
     using System;
     using System.Data.Entity;
     using System.Linq;
-
+    
     public class Db : DbContext
     {
         // Your context has been configured to use a 'Db' connection string from your application's 
@@ -13,14 +13,16 @@ namespace Ctm_Col
         // 
         // If you wish to target a different database and/or database provider, modify the 'Db' 
         // connection string in the application configuration file.
-        public Db()
-            : base("name=Db")
+        
+        public Db() : base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CTM;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;MultipleActiveResultSets=True")        
         {
+            Database.SetInitializer<Db>(new CreateDatabaseIfNotExists<Db>());
+
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            
+            Console.WriteLine("Hola");
         }
 
         public DbSet<Ajuste> Ajustes { get; set; }
@@ -29,9 +31,10 @@ namespace Ctm_Col
         public DbSet<ReciboPoliza> RecibosPoliza { get; set; }
         public DbSet<ReciboCredencial> RecibosCredencial { get; set; }
         public DbSet<ReciboDeducible> RecibosDeducible { get; set; }
+        public DbSet<ReciboPrimerIngreso> RecibosPrimerIngreso { get; set; }
         public DbSet<Taxi> Taxis { get; set; }
-        public DbSet<Chofer> Choferes { get; set; }
-        public DbSet<Concesionario> Concesionarios { get; set; }
+        public DbSet<Models.Chofer> Choferes { get; set; }
+        public DbSet<Models.Concesionario> Concesionarios { get; set; }
         public DbSet<Accidente> Accidentes { get; set; }
     }
 }

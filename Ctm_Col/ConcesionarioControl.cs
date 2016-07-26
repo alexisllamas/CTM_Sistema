@@ -6,14 +6,16 @@ using Ctm_Col.Models;
 using System.Data.Entity;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using DevExpress.XtraEditors;
 
 namespace Ctm_Col
 {
-    public partial class ConcesionarioForm : MaterialForm
+    public partial class ConcesionarioControl : UserControl
     {
         private string search = "";
-        private Concesionario _concesionario;
+        private Models.Concesionario _concesionario;
         private bool isModoVer;
+        private int sort = -1;
 
         private Concesionario Concesionario
         {
@@ -35,55 +37,103 @@ namespace Ctm_Col
                 
             }
         }
-        public ConcesionarioForm()
+        public ConcesionarioControl()
         {
             InitializeComponent();
 
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan800, Primary.Cyan900, Primary.Cyan500, Accent.Cyan200, TextShade.WHITE);
+            //var materialSkinManager = MaterialSkinManager.Instance;
+            //materialSkinManager.AddFormToManage(this);
+            //materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            //materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan800, Primary.Cyan900, Primary.Cyan500, Accent.Cyan200, TextShade.WHITE);
 
             using (var db = new Db())
             {
                 var concesionarios = db.Concesionarios.OrderBy(c => c.ApellidoPaterno).ThenBy(c => c.ApellidoMaterno).ThenBy(c => c.Nombres);
-                cargarDatos(concesionarios);
 
                 if (concesionarios.Any())
                     Concesionario = concesionarios.First();
                 else
                     modoNuevo();
+
+                var sitios = db.Taxis.Select(x => x.Sitio).Distinct();
+
+                foreach (var sitio in sitios)
+                {
+                    cmbSitios.Items.Add(sitio);
+                }
             }
+            cargarDatos();
         }
 
-        private void cargarDatos(IOrderedQueryable<Concesionario> concesionarios)
+        private void cargarDatos()
         {
             lvConcesionarios.Items.Clear();
-            var concesionariosFil = concesionarios.Where( u => u.Id.ToString().StartsWith(search) ||
-                u.Nombres.StartsWith(search) ||
-                u.ApellidoPaterno.StartsWith(search) ||
-                u.ApellidoMaterno.StartsWith(search) ||
-                u.Telefono.StartsWith(search) ||
-                u.Municipio.StartsWith(search) ||
-                u.Taxi.NumeroEconomico.Equals(search) ||
-                u.Taxi.Sitio.StartsWith(search));
-
-            foreach (var con in concesionariosFil)
+            Console.WriteLine(chckSitio.Checked);
+            using (var db = new Db())
             {
-                var lvi = new ListViewItem(con.Id.ToString());
-                lvi.SubItems.Add(con.Nombres);
-                lvi.SubItems.Add(con.ApellidoPaterno);
-                lvi.SubItems.Add(con.ApellidoMaterno);
-                lvi.SubItems.Add(con.Municipio);
-                lvi.SubItems.Add(con.Telefono);
-                if (con.Taxi != null)
-                {
-                    lvi.SubItems.Add(con.Taxi.NumeroEconomico);
-                    lvi.SubItems.Add(con.Taxi.Sitio);
-                }
-                lvi.SubItems.Add(con.Cargo);
+                var concesionarios = db.Concesionarios.Where(u => u.Id.ToString().StartsWith(search) ||
+                   u.Nombres.Contains(search) ||
+                   u.ApellidoPaterno.StartsWith(search) ||
+                   u.ApellidoMaterno.StartsWith(search) ||
+                   u.Telefono.StartsWith(search) ||
+                   u.Municipio.StartsWith(search) ||
+                   u.Taxi.NumeroEconomico.Equals(search) ||
+                   u.Taxi.Sitio.StartsWith(search));
 
-                lvConcesionarios.Items.Add(lvi);
+                if (chckSitio.Checked)
+                    concesionarios = concesionarios.Where(x => x.Taxi.Sitio == (string)cmbSitios.SelectedItem);
+
+                switch (sort)
+                {
+                    case 0:
+                        concesionarios = concesionarios.OrderBy(x => x.Id);
+                        break;
+                    case 1:
+                        concesionarios = concesionarios.OrderBy(x => x.Nombres);
+                        break;
+                    case 2:
+                        concesionarios = concesionarios.OrderBy(x => x.ApellidoPaterno);
+                        break;
+                    case 3:
+                        concesionarios = concesionarios.OrderBy(x => x.ApellidoMaterno);
+                        break;
+                    case 4:
+                        concesionarios = concesionarios.OrderBy(x => x.Municipio);
+                        break;
+                    case 5:
+                        concesionarios = concesionarios.OrderBy(x => x.Telefono);
+                        break;
+                    case 6:
+                        concesionarios = concesionarios.OrderBy(x =>x.Taxi.NumeroEconomico);
+                        break;
+                    case 7:
+                        concesionarios = concesionarios.OrderBy(x => x.Taxi.Sitio);
+                        break;
+                    case 8:
+                        concesionarios = concesionarios.OrderBy(x => x.Cargo);
+                        break;
+                    default:
+                        concesionarios = concesionarios.OrderBy(x => x.ApellidoPaterno).ThenBy(x => x.ApellidoMaterno).ThenBy(x => x.Nombres);
+                        break;
+
+                }
+                foreach (var con in concesionarios)
+                {
+                    var lvi = new ListViewItem(con.Id.ToString());
+                    lvi.SubItems.Add(con.Nombres);
+                    lvi.SubItems.Add(con.ApellidoPaterno);
+                    lvi.SubItems.Add(con.ApellidoMaterno);
+                    lvi.SubItems.Add(con.Municipio);
+                    lvi.SubItems.Add(con.Telefono);
+                    if (con.Taxi != null)
+                    {
+                        lvi.SubItems.Add(con.Taxi.NumeroEconomico);
+                        lvi.SubItems.Add(con.Taxi.Sitio);
+                    }
+                    lvi.SubItems.Add(con.Cargo);
+
+                    lvConcesionarios.Items.Add(lvi);
+                }
             }
         }
 
@@ -110,9 +160,9 @@ namespace Ctm_Col
                     txtSitio.Text = Concesionario.Taxi.Sitio;
                     txtPlaca.Text = Concesionario.Taxi.Placa;
                     txtNumSerie.Text = Concesionario.Taxi.NumeroSerie;
-                    txtCapacidad.Value = Int32.Parse(Concesionario.Taxi.Capacidad);
+                    txtCapacidad.Value = int.Parse((string)Concesionario.Taxi.Capacidad);
                     txtMarca.Text = Concesionario.Taxi.Marca;
-                    txtModelo.Value = new DateTime(Int32.Parse(Concesionario.Taxi.Modelo), 01, 01);
+                    txtModelo.Value = new DateTime(int.Parse((string)Concesionario.Taxi.Modelo), 01, 01);
                     txtMotor.Text = Concesionario.Taxi.Motor;
                 }
             }
@@ -126,7 +176,7 @@ namespace Ctm_Col
             }
             else
             {
-                var concesionario = new Concesionario
+                var concesionario = new Models.Concesionario
                 {
                     Nombres = txtNombre.Text.Trim(),
                     ApellidoPaterno = txtApPaterno.Text.Trim(),
@@ -157,8 +207,8 @@ namespace Ctm_Col
                     db.SaveChanges();
 
                     Concesionario = db.Concesionarios.Where(u => u.Telefono == concesionario.Telefono).First();
-                    cargarDatos(db.Concesionarios.OrderBy(c => c.ApellidoPaterno).ThenBy(c => c.ApellidoMaterno).ThenBy(c => c.Nombres));
                 }
+                cargarDatos();
 
                 modoVer();
             }
@@ -195,8 +245,8 @@ namespace Ctm_Col
 
                     Concesionario = concesionario;
 
-                    cargarDatos(db.Concesionarios.OrderBy(x=>x.ApellidoPaterno).ThenBy(x=>x.ApellidoMaterno).ThenBy(x=>x.Nombres));
                 }
+                cargarDatos();
 
                 DialogResult boton = MessageBox.Show("Concesionario modificado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -209,18 +259,31 @@ namespace Ctm_Col
                 using (var db = new Db())
                 {
                     var concesionario = db.Concesionarios.Where(u => u.Id == Concesionario.Id).First();
-                    DialogResult boton = MessageBox.Show("¿Quieres eliminar a " + concesionario.Nombres + " " + concesionario.ApellidoPaterno + "?", "Alerta", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
+                    DialogResult boton = MessageBox.Show(string.Format("¿Quieres eliminar a {0} {1}?", 
+                                                             concesionario.Nombres, 
+                                                             concesionario.ApellidoPaterno), "Alerta", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
                     if (boton == DialogResult.Yes)
                     {
 
                         if (concesionario.Taxi != null)
                             db.Taxis.Remove(concesionario.Taxi);
 
-                        if(concesionario.ReciboPoliza.Any())
+                        if (concesionario.Poliza != null)
+                            db.Polizas.Remove(concesionario.Poliza);
+
+                        if (concesionario.ReciboPoliza.Any())
                         {
                             foreach(var recibos in db.RecibosPoliza.Where(x=>x.Concesionario.Id == concesionario.Id))
                             {
                                 db.RecibosPoliza.Remove(recibos);
+                            }
+                        }
+
+                        if (concesionario.ReciboPrimerIngreso.Any())
+                        {
+                            foreach (var recibos in db.RecibosPrimerIngreso.Where(x => x.Concesionario.Id == concesionario.Id))
+                            {
+                                db.RecibosPrimerIngreso.Remove(recibos);
                             }
                         }
 
@@ -231,48 +294,17 @@ namespace Ctm_Col
                         if (concesionarios.Any())
                             Concesionario = concesionarios.First();
                         else
-                            _concesionario = null;
-                        cargarDatos(concesionarios);
+                            Concesionario = null;
                     }
                 }
+                cargarDatos();
             }
         }
         
         private void lvConcesionarios_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            using (var db = new Db())
-            {
-                switch (e.Column)
-                {
-                    case 0:
-                        cargarDatos(db.Concesionarios.OrderBy(x => x.Id));
-                        break;
-                    case 1:
-                        cargarDatos(db.Concesionarios.OrderBy(x => x.Nombres));
-                        break;
-                    case 2:
-                        cargarDatos(db.Concesionarios.OrderBy(x => x.ApellidoPaterno));
-                        break;
-                    case 3:
-                        cargarDatos(db.Concesionarios.OrderBy(x => x.ApellidoMaterno));
-                        break;
-                    case 4:
-                        cargarDatos(db.Concesionarios.OrderBy(x => x.Municipio));
-                        break;
-                    case 5:
-                        cargarDatos(db.Concesionarios.OrderBy(x => x.Telefono));
-                        break;
-                    case 6:
-                        cargarDatos(db.Concesionarios.OrderBy(x => x.Taxi.NumeroEconomico));
-                        break;
-                    case 7:
-                        cargarDatos(db.Concesionarios.OrderBy(x => x.Taxi.Sitio));
-                        break;
-                    case 8:
-                        cargarDatos(db.Concesionarios.OrderBy(x => x.Cargo));
-                        break;
-                }
-            }
+            sort = e.Column;
+            cargarDatos();    
         }
 
         private void lvConcesionarios_SelectedIndexChanged(object sender, EventArgs e)
@@ -291,18 +323,14 @@ namespace Ctm_Col
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             search = txtBuscar.Text.Trim();
-            using (var db = new Db())
-            {
-                var concesionarios = db.Concesionarios.OrderBy(x=>x.ApellidoPaterno).ThenBy(x=>x.ApellidoMaterno).ThenBy(x=>x.Nombres);
-                cargarDatos(concesionarios);
-            }
+            cargarDatos();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             using (var db = new Db())
             {
-                if (db.Choferes.Any())
+                if (db.Concesionarios.Any())
                     modoVer();
             }
         }
@@ -352,11 +380,9 @@ namespace Ctm_Col
 
         private void btnReciboPoliza_Click(object sender, EventArgs e)
         {
-            var recibosForm = new RecibosPolizaForm();
-
             if (isModoVer)
             {
-                recibosForm.Concesionario = Concesionario;
+                var recibosForm = new ReciboPolizaForm(Concesionario);
                 recibosForm.ShowDialog();
             }
             else
@@ -368,9 +394,61 @@ namespace Ctm_Col
 
         private void btnPoliza_Click(object sender, EventArgs e)
         {
-            var polizaForm = new PolizaForm(Concesionario);
+            if (isModoVer)
+            {
+                var polizaForm = new PolizaForm(Concesionario);
+                polizaForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Selecciona un Concesionario primero", "¡Alerta!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
-            polizaForm.ShowDialog();
+        private void btnPrimerIngreso_Click(object sender, EventArgs e)
+        {
+            if (isModoVer)
+            {
+                var recibosForm = new ReciboPrimerIngresoForm(Concesionario);
+                recibosForm.ShowDialog();
+                return;
+            }
+            MessageBox.Show("Selecciona un Concesionario primero", "¡Alerta!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        
+        private void chckSitio_CheckedChanged(object sender, EventArgs e)
+        {
+            cargarDatos();
+        }
+
+        private void cmbSitios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cargarDatos();
+        }
+
+        private void lvConcesionarios_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (lvConcesionarios.SelectedIndices.Count == 0) return;
+
+            int id = Int32.Parse(lvConcesionarios.SelectedItems[0].SubItems[0].Text);
+
+            if (e.KeyChar == (char)Keys.Delete)
+            {
+                
+
+                Console.WriteLine(id);
+            } else if(e.KeyChar == (char)Keys.B)
+            {
+                Console.WriteLine("b" + id);
+            }
+        }
+
+        private void lvConcesionarios_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                btnEliminar_Click(null, null);
+            }
         }
     }
 }

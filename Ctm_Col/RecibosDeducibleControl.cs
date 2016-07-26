@@ -14,10 +14,11 @@ using System.Data.Entity;
 
 namespace Ctm_Col
 {
-    public partial class RecibosCredencialForm : MaterialForm
+    public partial class RecibosDeducibleControl : UserControl
     {
         private Chofer _chofer;
-        private ReciboCredencial _recibo;
+        private ReciboDeducible _recibo;
+        private bool porSitio = false;
         private bool porFecha = false;
         private string search = "";
         public Chofer Chofer
@@ -34,9 +35,9 @@ namespace Ctm_Col
                 {
                     if (_chofer != null)
                     {
-                        if (db.RecibosCredencial.Where(x => x.Chofer.Id == _chofer.Id).Any())
+                        if (db.RecibosDeducible.Where(x => x.Chofer.Id == _chofer.Id).Any())
                         {
-                            Recibo = (db.RecibosCredencial.Where(x => x.Chofer.Id == _chofer.Id).OrderByDescending(x => x.Fecha).First());
+                            Recibo = (db.RecibosDeducible.Where(x => x.Chofer.Id == _chofer.Id).OrderByDescending(x => x.Fecha).First());
 
                             modoVer();
                             cargarDatos();
@@ -49,7 +50,7 @@ namespace Ctm_Col
                 }
             }
         }
-        public ReciboCredencial Recibo
+        public ReciboDeducible Recibo
         {
             get
             {
@@ -66,15 +67,9 @@ namespace Ctm_Col
                 }
             }
         }
-        public RecibosCredencialForm()
+        public RecibosDeducibleControl()
         {
             InitializeComponent();
-
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Red800, Primary.Red900, Primary.Red500, Accent.Red200, TextShade.WHITE);
-
             if (Chofer == null)
             {
                 llenarTabla();
@@ -84,6 +79,16 @@ namespace Ctm_Col
                 btnNuevo.Enabled = false;
                 dtpFecha.Enabled = false;
                 txtCantidad.Enabled = false;
+            }
+
+            using (var db = new Db())
+            {
+                var sitios = db.Taxis.Select(x => x.Sitio).Distinct();
+
+                foreach (var sitio in sitios)
+                {
+                    cmbSitios.Items.Add(sitio);
+                }
             }
 
             dtpFechaFin.MinDate = dtpFechaIni.Value;
@@ -100,19 +105,32 @@ namespace Ctm_Col
             {
                 using (var db = new Db())
                 {
-                    var recibo = new ReciboCredencial
+                    var taxis = db.Taxis.Where(x => x.NumeroEconomico == txtNumero.Text.Trim() && x.Sitio == txtSitio.Text.Trim());
+                    if (taxis.Any())
                     {
-                        Fecha = dtpFecha.Value,
-                        Cantidad = (Double)txtCantidad.Value,
-                        Chofer = db.Choferes.Where(x => x.Id == Chofer.Id).First()
-                    };
+                        var taxi = taxis.First();
+
+                        var recibo = new ReciboDeducible
+                        {
+                            Fecha = dtpFecha.Value,
+                            Cantidad = (Double)txtCantidad.Value,
+                            Chofer = db.Choferes.Where(x => x.Id == Chofer.Id).First(),
+                            Taxi = taxi
+                        };
 
 
-                    db.RecibosCredencial.Add(recibo);
-                    Recibo = recibo;
-                    db.SaveChanges();
+                        db.RecibosDeducible.Add(recibo);
+                        Recibo = recibo;
+                        db.SaveChanges();
+
+                        modoVer();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Taxi no encontrado", "¡Mal!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                modoVer();
+                
             }
         }
 
@@ -157,23 +175,28 @@ namespace Ctm_Col
                 txtApPaterno.Text = Recibo.Chofer.ApellidoPaterno;
                 txtNombre.Text = Recibo.Chofer.Nombres;
                 txtApMaterno.Text = Recibo.Chofer.ApellidoMaterno;
+                txtNumero.Text = Recibo.Taxi.NumeroEconomico;
+                txtSitio.Text = Recibo.Taxi.Sitio;
             }
         }
 
-        private void llenarTabla()
+        public void llenarTabla()
         {
             lvRecibos.Items.Clear();
             using (var db = new Db())
             {
-                IQueryable<ReciboCredencial> recibos;
+                IQueryable<ReciboDeducible> recibos;
                 if (Chofer != null)
-                    recibos = db.RecibosCredencial.Where(x => x.Chofer.Id == Chofer.Id).OrderByDescending(x => x.Fecha);
+                    recibos = db.RecibosDeducible.Where(x => x.Chofer.Id == Chofer.Id).OrderByDescending(x => x.Fecha);
                 else
-                    recibos = db.RecibosCredencial.OrderByDescending(x=>x.Fecha);
+                    recibos = db.RecibosDeducible.OrderByDescending(x=>x.Fecha);
 
                 if (porFecha)
                     recibos = recibos.Where(x => DbFunctions.TruncateTime(x.Fecha) >= DbFunctions.TruncateTime(dtpFechaIni.Value)
                         && DbFunctions.TruncateTime(x.Fecha) <= DbFunctions.TruncateTime(dtpFechaFin.Value));
+
+                if (porSitio)
+                    recibos = recibos.Where(x => x.Taxi.Sitio == (string)cmbSitios.SelectedItem);
 
                 recibos = recibos.Where(x => x.Id.ToString().StartsWith(search) ||
                     x.Chofer.Nombres.Contains(search) ||
@@ -188,30 +211,8 @@ namespace Ctm_Col
                     lvi.SubItems.Add(recibo.Chofer.Nombres);
                     lvi.SubItems.Add(recibo.Chofer.ApellidoPaterno);
                     lvi.SubItems.Add(recibo.Chofer.ApellidoMaterno);
-
-                    lvRecibos.Items.Add(lvi);
-                }
-            }
-        }
-
-        private void llenarTabla(IQueryable<ReciboCredencial> recibos)
-        {
-            lvRecibos.Items.Clear();
-            using (var db = new Db())
-            {
-                if (Chofer != null)
-                    recibos = recibos.Where(x => x.Chofer.Id == Chofer.Id).OrderByDescending(x => x.Fecha);
-                else
-                    recibos = recibos.OrderBy(x => x.Fecha);
-
-                foreach (var recibo in recibos)
-                {
-                    var lvi = new ListViewItem(recibo.Id.ToString());
-                    lvi.SubItems.Add(recibo.Fecha.ToShortDateString());
-                    lvi.SubItems.Add(String.Format("{0:c}", recibo.Cantidad));
-                    lvi.SubItems.Add(recibo.Chofer.Nombres);
-                    lvi.SubItems.Add(recibo.Chofer.ApellidoPaterno);
-                    lvi.SubItems.Add(recibo.Chofer.ApellidoMaterno);
+                    lvi.SubItems.Add(recibo.Taxi.NumeroEconomico);
+                    lvi.SubItems.Add(recibo.Taxi.Sitio);
 
                     lvRecibos.Items.Add(lvi);
                 }
@@ -224,7 +225,7 @@ namespace Ctm_Col
             {
                 using (var db = new Db())
                 {
-                    var recibo = db.RecibosCredencial.Where(x => x.Id == Recibo.Id).First();
+                    var recibo = db.RecibosDeducible.Where(x => x.Id == Recibo.Id).First();
 
                     recibo.Cantidad = (double)txtCantidad.Value;
                     recibo.Fecha = dtpFecha.Value;
@@ -243,15 +244,15 @@ namespace Ctm_Col
             {
                 using (var db = new Db())
                 {
-                    DialogResult boton = MessageBox.Show("¿Quieres eliminar este recibo " + Recibo.Id + "?", "Alerta", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
+                    DialogResult boton = MessageBox.Show(string.Format("¿Quieres eliminar este recibo {0}?", Recibo.Id), "Alerta", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
                     if (boton == DialogResult.Yes)
                     {
-                        var recibo = db.RecibosCredencial.Where(x => x.Id == Recibo.Id).First();
-                        db.RecibosCredencial.Remove(recibo);
+                        var recibo = db.RecibosDeducible.Where(x => x.Id == Recibo.Id).First();
+                        db.RecibosDeducible.Remove(recibo);
                         db.SaveChanges();
 
                         if (db.RecibosCredencial.Where(x => x.Chofer.Id == Chofer.Id).Any())
-                            Recibo = db.RecibosCredencial.Where(x => x.Chofer.Id == Chofer.Id).First();
+                            Recibo = db.RecibosDeducible.Where(x => x.Chofer.Id == Chofer.Id).First();
                         else
                         {
                             modoNuevo();
@@ -269,7 +270,7 @@ namespace Ctm_Col
             var id = Int32.Parse(lvRecibos.SelectedItems[0].SubItems[0].Text);
             using (var db = new Db())
             {
-                var recibo = db.RecibosCredencial.Where(x => x.Id == id).First();
+                var recibo = db.RecibosDeducible.Where(x => x.Id == id).First();
                 _recibo = recibo;
                 cargarDatos();
             }
@@ -279,9 +280,18 @@ namespace Ctm_Col
         {
             using (var db = new Db())
             {
-                if (db.RecibosCredencial.Where(x=>x.Chofer.Id == Chofer.Id).Any())
+                if (db.RecibosDeducible.Where(x=>x.Chofer.Id == Chofer.Id).Any())
                     modoVer();
             }
+        }
+
+        private void chckSitio_CheckedChanged(object sender, EventArgs e)
+        {
+            filtrarSitio();
+        }
+        private void cmbSitios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filtrarSitio();
         }
 
         private void chckFecha_CheckedChanged(object sender, EventArgs e)
@@ -307,10 +317,32 @@ namespace Ctm_Col
             llenarTabla();
         }
 
+        private void filtrarSitio()
+        {
+            if (cmbSitios.SelectedIndex < 0) return;
+
+            porSitio = chckSitio.Checked;
+
+            llenarTabla();
+        }
+
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             search = txtBuscar.Text;
             llenarTabla();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            Imprimir.ReciboDeducible(_recibo);
+        }
+
+        private void lvRecibos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                btnEliminar_Click(null, null);
+            }
         }
     }
 }

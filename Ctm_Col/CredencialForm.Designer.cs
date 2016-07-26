@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CredencialForm));
             this.label4 = new System.Windows.Forms.Label();
             this.dtpFechaIni = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -93,6 +94,7 @@
             this.btnImprimir.TabIndex = 73;
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnRenovar
             // 
@@ -152,6 +154,7 @@
             this.Controls.Add(this.txtApMaterno);
             this.Controls.Add(this.txtApPaterno);
             this.Controls.Add(this.txtNombre);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CredencialForm";
             this.Text = "Credencial";
             this.ResumeLayout(false);
