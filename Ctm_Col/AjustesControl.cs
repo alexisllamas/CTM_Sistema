@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Ctm_Col
 {
-    public partial class MainFormPirata : Form
+    public partial class AjustesControl : UserControl
     {
-        public MainFormPirata()
+        public AjustesControl()
         {
             InitializeComponent();
         }

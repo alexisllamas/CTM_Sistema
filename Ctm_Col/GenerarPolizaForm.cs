@@ -13,16 +13,11 @@ using Ctm_Col.Models;
 
 namespace Ctm_Col
 {
-    public partial class GenerarPolizaForm : MaterialForm
+    public partial class GenerarPolizaForm : UserControl
     {
         public GenerarPolizaForm()
         {
             InitializeComponent();
-
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo800, Primary.Indigo900, Primary.Indigo500, Accent.Indigo200, TextShade.WHITE);
 
             using(var db = new Db())
             {
@@ -91,13 +86,6 @@ namespace Ctm_Col
                             poliza.FechaFinalVigencia = DateTime.Today.AddYears(1);
 
                         }
-                        var recibo = new ReciboPoliza
-                        {
-                            Cantidad = (double)txtCantidad.Value,
-                            Fecha = DateTime.Today
-                        };
-
-                        conce.ReciboPoliza.Add(recibo);
                     }
                     db.SaveChanges();
                 }

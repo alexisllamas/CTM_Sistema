@@ -45,7 +45,7 @@
             this.label4.AutoSize = true;
             this.label4.Enabled = false;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 167);
+            this.label4.Location = new System.Drawing.Point(16, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(108, 12);
             this.label4.TabIndex = 70;
@@ -55,7 +55,7 @@
             // 
             this.dtpFechaIni.Enabled = false;
             this.dtpFechaIni.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaIni.Location = new System.Drawing.Point(14, 182);
+            this.dtpFechaIni.Location = new System.Drawing.Point(18, 108);
             this.dtpFechaIni.Name = "dtpFechaIni";
             this.dtpFechaIni.Size = new System.Drawing.Size(147, 20);
             this.dtpFechaIni.TabIndex = 69;
@@ -65,7 +65,7 @@
             this.label1.AutoSize = true;
             this.label1.Enabled = false;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(198, 167);
+            this.label1.Location = new System.Drawing.Point(202, 93);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 12);
             this.label1.TabIndex = 72;
@@ -75,7 +75,7 @@
             // 
             this.dtpFechaFin.Enabled = false;
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaFin.Location = new System.Drawing.Point(200, 182);
+            this.dtpFechaFin.Location = new System.Drawing.Point(204, 108);
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.Size = new System.Drawing.Size(147, 20);
             this.dtpFechaFin.TabIndex = 71;
@@ -85,7 +85,7 @@
             this.btnImprimir.AutoSize = true;
             this.btnImprimir.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnImprimir.Depth = 0;
-            this.btnImprimir.Location = new System.Drawing.Point(46, 211);
+            this.btnImprimir.Location = new System.Drawing.Point(50, 137);
             this.btnImprimir.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnImprimir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnImprimir.Name = "btnImprimir";
@@ -102,7 +102,7 @@
             this.btnRenovar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnRenovar.Depth = 0;
             this.btnRenovar.Enabled = false;
-            this.btnRenovar.Location = new System.Drawing.Point(240, 211);
+            this.btnRenovar.Location = new System.Drawing.Point(244, 137);
             this.btnRenovar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnRenovar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRenovar.Name = "btnRenovar";
@@ -116,7 +116,7 @@
             // txtApMaterno
             // 
             this.txtApMaterno.Enabled = false;
-            this.txtApMaterno.Location = new System.Drawing.Point(234, 86);
+            this.txtApMaterno.Location = new System.Drawing.Point(238, 12);
             this.txtApMaterno.Name = "txtApMaterno";
             this.txtApMaterno.Placeholder = "Apellido Materno";
             this.txtApMaterno.Size = new System.Drawing.Size(126, 48);
@@ -125,7 +125,7 @@
             // txtApPaterno
             // 
             this.txtApPaterno.Enabled = false;
-            this.txtApPaterno.Location = new System.Drawing.Point(114, 86);
+            this.txtApPaterno.Location = new System.Drawing.Point(118, 12);
             this.txtApPaterno.Name = "txtApPaterno";
             this.txtApPaterno.Placeholder = "Apellido Paterno";
             this.txtApPaterno.Size = new System.Drawing.Size(114, 48);
@@ -134,7 +134,7 @@
             // txtNombre
             // 
             this.txtNombre.Enabled = false;
-            this.txtNombre.Location = new System.Drawing.Point(23, 86);
+            this.txtNombre.Location = new System.Drawing.Point(27, 12);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Placeholder = "Nombre(s)";
             this.txtNombre.Size = new System.Drawing.Size(85, 48);
@@ -144,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 283);
+            this.ClientSize = new System.Drawing.Size(376, 200);
             this.Controls.Add(this.btnRenovar);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.label1);

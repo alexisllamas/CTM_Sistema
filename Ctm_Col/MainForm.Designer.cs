@@ -28,232 +28,226 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node9");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node10");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Usuarios", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Credencial");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Deducible");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Poliza");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Primer Ingreso");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Recibos", new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode5,
+            treeNode6,
+            treeNode7});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Generar Pólizas");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Acciones", new System.Windows.Forms.TreeNode[] {
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Ajuste");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.tileNavCategory1 = new DevExpress.XtraBars.Navigation.TileNavCategory();
-            this.tileNavCategory4 = new DevExpress.XtraBars.Navigation.TileNavCategory();
-            this.tileNavCategory3 = new DevExpress.XtraBars.Navigation.TileNavCategory();
-            this.navButton3 = new DevExpress.XtraBars.Navigation.NavButton();
-            this.navButton2 = new DevExpress.XtraBars.Navigation.NavButton();
-            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nviConcesionario = new DevExpress.XtraNavBar.NavBarItem();
-            this.nvbChofer = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarGroup4 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarItem5 = new DevExpress.XtraNavBar.NavBarItem();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
-            this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnConcesionario = new System.Windows.Forms.Button();
+            this.btnChofer = new System.Windows.Forms.Button();
+            this.btnReciboCredencial = new System.Windows.Forms.Button();
+            this.btnReciboDeducible = new System.Windows.Forms.Button();
+            this.btnReciboPoliza = new System.Windows.Forms.Button();
+            this.btnReciboPrimer = new System.Windows.Forms.Button();
+            this.btnGenerarPoliza = new System.Windows.Forms.Button();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tileNavCategory1
+            // statusStrip1
             // 
-            this.tileNavCategory1.Name = "tileNavCategory1";
-            this.tileNavCategory1.OptionsDropDown.BackColor = System.Drawing.Color.Empty;
-            this.tileNavCategory1.OwnerCollection = null;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 706);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(627, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
             // 
+            // toolStripStatusLabel1
             // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(32, 17);
+            this.toolStripStatusLabel1.Text = "Listo";
             // 
-            this.tileNavCategory1.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            this.tileNavCategory1.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
+            // btnConcesionario
             // 
-            // tileNavCategory4
+            this.btnConcesionario.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnConcesionario.Location = new System.Drawing.Point(0, 0);
+            this.btnConcesionario.Name = "btnConcesionario";
+            this.btnConcesionario.Size = new System.Drawing.Size(108, 23);
+            this.btnConcesionario.TabIndex = 0;
+            this.btnConcesionario.Text = "Concesionario";
+            this.btnConcesionario.UseVisualStyleBackColor = true;
+            this.btnConcesionario.Click += new System.EventHandler(this.btnConcesionario_Click);
             // 
-            this.tileNavCategory4.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Right;
-            this.tileNavCategory4.Caption = "tileNavCategory4";
-            this.tileNavCategory4.Name = "tileNavCategory4";
-            this.tileNavCategory4.OptionsDropDown.BackColor = System.Drawing.Color.Empty;
-            this.tileNavCategory4.OwnerCollection = null;
+            // btnChofer
             // 
+            this.btnChofer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnChofer.Location = new System.Drawing.Point(0, 23);
+            this.btnChofer.Name = "btnChofer";
+            this.btnChofer.Size = new System.Drawing.Size(108, 23);
+            this.btnChofer.TabIndex = 1;
+            this.btnChofer.Text = "Chofer";
+            this.btnChofer.UseVisualStyleBackColor = true;
+            this.btnChofer.Click += new System.EventHandler(this.btnChofer_Click);
             // 
+            // btnReciboCredencial
             // 
-            this.tileNavCategory4.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            this.tileNavCategory4.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
+            this.btnReciboCredencial.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReciboCredencial.Location = new System.Drawing.Point(0, 46);
+            this.btnReciboCredencial.Name = "btnReciboCredencial";
+            this.btnReciboCredencial.Size = new System.Drawing.Size(108, 23);
+            this.btnReciboCredencial.TabIndex = 2;
+            this.btnReciboCredencial.Text = "Recibo Credencial";
+            this.btnReciboCredencial.UseVisualStyleBackColor = true;
+            this.btnReciboCredencial.Click += new System.EventHandler(this.btnReciboCredencial_Click);
             // 
-            // tileNavCategory3
+            // btnReciboDeducible
             // 
-            this.tileNavCategory3.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Right;
-            this.tileNavCategory3.Caption = "tileNavCategory3";
-            this.tileNavCategory3.Name = "tileNavCategory3";
-            this.tileNavCategory3.OptionsDropDown.BackColor = System.Drawing.Color.Empty;
-            this.tileNavCategory3.OwnerCollection = null;
+            this.btnReciboDeducible.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReciboDeducible.Location = new System.Drawing.Point(0, 69);
+            this.btnReciboDeducible.Name = "btnReciboDeducible";
+            this.btnReciboDeducible.Size = new System.Drawing.Size(108, 23);
+            this.btnReciboDeducible.TabIndex = 3;
+            this.btnReciboDeducible.Text = "Recibo Deducible";
+            this.btnReciboDeducible.UseVisualStyleBackColor = true;
+            this.btnReciboDeducible.Click += new System.EventHandler(this.btnReciboDeducible_Click);
             // 
+            // btnReciboPoliza
             // 
+            this.btnReciboPoliza.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReciboPoliza.Location = new System.Drawing.Point(0, 92);
+            this.btnReciboPoliza.Name = "btnReciboPoliza";
+            this.btnReciboPoliza.Size = new System.Drawing.Size(108, 23);
+            this.btnReciboPoliza.TabIndex = 4;
+            this.btnReciboPoliza.Text = "Recibo Poliza";
+            this.btnReciboPoliza.UseVisualStyleBackColor = true;
+            this.btnReciboPoliza.Click += new System.EventHandler(this.btnReciboPoliza_Click);
             // 
-            this.tileNavCategory3.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            this.tileNavCategory3.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
+            // btnReciboPrimer
             // 
-            // navButton3
+            this.btnReciboPrimer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReciboPrimer.Location = new System.Drawing.Point(0, 115);
+            this.btnReciboPrimer.Name = "btnReciboPrimer";
+            this.btnReciboPrimer.Size = new System.Drawing.Size(108, 23);
+            this.btnReciboPrimer.TabIndex = 5;
+            this.btnReciboPrimer.Text = "Recibo Primer Ingreso";
+            this.btnReciboPrimer.UseVisualStyleBackColor = true;
+            this.btnReciboPrimer.Click += new System.EventHandler(this.btnReciboPrimer_Click);
             // 
-            this.navButton3.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Right;
-            this.navButton3.Caption = "navButton3";
-            this.navButton3.Name = "navButton3";
+            // btnGenerarPoliza
             // 
-            // navButton2
+            this.btnGenerarPoliza.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGenerarPoliza.Location = new System.Drawing.Point(0, 138);
+            this.btnGenerarPoliza.Name = "btnGenerarPoliza";
+            this.btnGenerarPoliza.Size = new System.Drawing.Size(108, 23);
+            this.btnGenerarPoliza.TabIndex = 6;
+            this.btnGenerarPoliza.Text = "Generar Poliza";
+            this.btnGenerarPoliza.UseVisualStyleBackColor = true;
+            this.btnGenerarPoliza.Click += new System.EventHandler(this.btnGenerarPoliza_Click);
             // 
-            this.navButton2.Caption = "Main Menu";
-            this.navButton2.IsMain = true;
-            this.navButton2.Name = "navButton2";
+            // treeView1
             // 
-            // splitContainerControl1
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.treeView1.Location = new System.Drawing.Point(0, 161);
+            this.treeView1.Name = "treeView1";
+            treeNode1.Name = "Node9";
+            treeNode1.Text = "Node9";
+            treeNode2.ImageIndex = -2;
+            treeNode2.Name = "Node10";
+            treeNode2.Text = "Node10";
+            treeNode3.Name = "Node0";
+            treeNode3.Text = "Usuarios";
+            treeNode4.Name = "Node11";
+            treeNode4.Text = "Credencial";
+            treeNode5.Name = "Node12";
+            treeNode5.Text = "Deducible";
+            treeNode6.Name = "Node14";
+            treeNode6.Text = "Poliza";
+            treeNode7.Name = "Node16";
+            treeNode7.Text = "Primer Ingreso";
+            treeNode8.Name = "Node1";
+            treeNode8.Text = "Recibos";
+            treeNode9.Name = "Node17";
+            treeNode9.Text = "Generar Pólizas";
+            treeNode10.Name = "Node2";
+            treeNode10.Text = "Acciones";
+            treeNode11.Name = "Node3";
+            treeNode11.Text = "Ajuste";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode3,
+            treeNode8,
+            treeNode10,
+            treeNode11});
+            this.treeView1.Size = new System.Drawing.Size(108, 69);
+            this.treeView1.TabIndex = 7;
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
-            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl1.Name = "splitContainerControl1";
-            this.splitContainerControl1.Panel1.Controls.Add(this.navBarControl1);
-            this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1017, 658);
-            this.splitContainerControl1.SplitterPosition = 153;
-            this.splitContainerControl1.TabIndex = 0;
-            this.splitContainerControl1.Text = "splitContainerControl1";
+            // splitContainer1
             // 
-            // navBarControl1
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            this.navBarControl1.ActiveGroup = this.navBarGroup3;
-            this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.navBarGroup1,
-            this.navBarGroup3,
-            this.navBarGroup4});
-            this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
-            this.navBarItem1,
-            this.navBarItem2,
-            this.navBarItem3,
-            this.navBarItem4,
-            this.nviConcesionario,
-            this.nvbChofer,
-            this.navBarItem5});
-            this.navBarControl1.Location = new System.Drawing.Point(0, 0);
-            this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 153;
-            this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.ExplorerBar;
-            this.navBarControl1.Size = new System.Drawing.Size(153, 658);
-            this.navBarControl1.TabIndex = 0;
-            this.navBarControl1.Text = "navBarControl1";
+            // splitContainer1.Panel1
             // 
-            // navBarGroup3
-            // 
-            this.navBarGroup3.Caption = "Recibos";
-            this.navBarGroup3.Expanded = true;
-            this.navBarGroup3.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem3),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4)});
-            this.navBarGroup3.Name = "navBarGroup3";
-            this.navBarGroup3.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup3.SmallImage")));
-            // 
-            // navBarItem1
-            // 
-            this.navBarItem1.Caption = "Credenciales";
-            this.navBarItem1.Name = "navBarItem1";
-            this.navBarItem1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem1_LinkClicked);
-            // 
-            // navBarItem2
-            // 
-            this.navBarItem2.Caption = "Pólizas";
-            this.navBarItem2.Name = "navBarItem2";
-            this.navBarItem2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem2_LinkClicked);
-            // 
-            // navBarItem3
-            // 
-            this.navBarItem3.Caption = "Deducible";
-            this.navBarItem3.Name = "navBarItem3";
-            this.navBarItem3.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem3_LinkClicked);
-            // 
-            // navBarItem4
-            // 
-            this.navBarItem4.Caption = "Primer Ingreso";
-            this.navBarItem4.Name = "navBarItem4";
-            this.navBarItem4.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem4_LinkClicked);
-            // 
-            // navBarGroup1
-            // 
-            this.navBarGroup1.Caption = "Usuarios";
-            this.navBarGroup1.Expanded = true;
-            this.navBarGroup1.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Small;
-            this.navBarGroup1.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
-            this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nviConcesionario),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nvbChofer)});
-            this.navBarGroup1.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup1.LargeImage")));
-            this.navBarGroup1.Name = "navBarGroup1";
-            this.navBarGroup1.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup1.SmallImage")));
-            // 
-            // nviConcesionario
-            // 
-            this.nviConcesionario.Caption = "Concesionarios";
-            this.nviConcesionario.LargeImage = ((System.Drawing.Image)(resources.GetObject("nviConcesionario.LargeImage")));
-            this.nviConcesionario.Name = "nviConcesionario";
-            this.nviConcesionario.SmallImage = ((System.Drawing.Image)(resources.GetObject("nviConcesionario.SmallImage")));
-            this.nviConcesionario.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nviConcesionario_LinkClicked);
-            // 
-            // nvbChofer
-            // 
-            this.nvbChofer.Caption = "Choferes";
-            this.nvbChofer.LargeImage = ((System.Drawing.Image)(resources.GetObject("nvbChofer.LargeImage")));
-            this.nvbChofer.Name = "nvbChofer";
-            this.nvbChofer.SmallImage = ((System.Drawing.Image)(resources.GetObject("nvbChofer.SmallImage")));
-            this.nvbChofer.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nvbChofer_LinkClicked);
-            // 
-            // navBarGroup4
-            // 
-            this.navBarGroup4.Caption = "Acciones";
-            this.navBarGroup4.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem5)});
-            this.navBarGroup4.Name = "navBarGroup4";
-            this.navBarGroup4.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup4.SmallImage")));
-            // 
-            // navBarItem5
-            // 
-            this.navBarItem5.Caption = "Generar Pólizas";
-            this.navBarItem5.Name = "navBarItem5";
-            this.navBarItem5.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItem5.SmallImage")));
-            this.navBarItem5.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem5_LinkClicked);
+            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
+            this.splitContainer1.Panel1.Controls.Add(this.btnGenerarPoliza);
+            this.splitContainer1.Panel1.Controls.Add(this.btnReciboPrimer);
+            this.splitContainer1.Panel1.Controls.Add(this.btnReciboPoliza);
+            this.splitContainer1.Panel1.Controls.Add(this.btnReciboDeducible);
+            this.splitContainer1.Panel1.Controls.Add(this.btnReciboCredencial);
+            this.splitContainer1.Panel1.Controls.Add(this.btnChofer);
+            this.splitContainer1.Panel1.Controls.Add(this.btnConcesionario);
+            this.splitContainer1.Size = new System.Drawing.Size(627, 728);
+            this.splitContainer1.SplitterDistance = 108;
+            this.splitContainer1.TabIndex = 0;
             // 
             // MainForm
             // 
-            this.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1017, 658);
-            this.Controls.Add(this.splitContainerControl1);
+            this.ClientSize = new System.Drawing.Size(627, 728);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Permisionario";
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
-            this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private DevExpress.XtraBars.Navigation.TileNavCategory tileNavCategory1;
-        private DevExpress.XtraBars.Navigation.TileNavCategory tileNavCategory4;
-        private DevExpress.XtraBars.Navigation.TileNavCategory tileNavCategory3;
-        private DevExpress.XtraBars.Navigation.NavButton navButton3;
-        private DevExpress.XtraBars.Navigation.NavButton navButton2;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraNavBar.NavBarControl navBarControl1;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup3;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem1;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem2;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem3;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem4;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup4;
-        private DevExpress.XtraNavBar.NavBarItem nviConcesionario;
-        private DevExpress.XtraNavBar.NavBarItem nvbChofer;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem5;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Button btnConcesionario;
+        private System.Windows.Forms.Button btnChofer;
+        private System.Windows.Forms.Button btnReciboCredencial;
+        private System.Windows.Forms.Button btnReciboDeducible;
+        private System.Windows.Forms.Button btnReciboPoliza;
+        private System.Windows.Forms.Button btnReciboPrimer;
+        private System.Windows.Forms.Button btnGenerarPoliza;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }

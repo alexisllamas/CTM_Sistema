@@ -13,7 +13,7 @@ using Ctm_Col.Models;
 
 namespace Ctm_Col
 {
-    public partial class CredencialForm : MaterialForm
+    public partial class CredencialForm : Form
     {
         private Models.Chofer _chofer;
         private Credencial _credencial;
@@ -22,12 +22,6 @@ namespace Ctm_Col
         {
             InitializeComponent();
 
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo800, Primary.Indigo900, Primary.Indigo500, Accent.Indigo200, TextShade.WHITE);
-
-            Console.WriteLine(chofer.Nombres);
             _chofer = chofer;
 
             using (var db = new Db())

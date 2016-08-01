@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Ctm_Col
 {
-    public partial class PolizaForm : MaterialForm
+    public partial class PolizaForm : Form
     {
         private Models.Concesionario _concesionario;
         private Poliza _poliza;
@@ -21,11 +21,6 @@ namespace Ctm_Col
         public PolizaForm(Models.Concesionario conce)
         {
             InitializeComponent();
-
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo800, Primary.Indigo900, Primary.Indigo500, Accent.Indigo200, TextShade.WHITE);
 
             _concesionario = conce;
 
@@ -109,15 +104,7 @@ namespace Ctm_Col
 
                     _poliza = db.Concesionarios.Where(x => x.Id == _concesionario.Id).First().Poliza;
                 }
-
-                var recibo = new ReciboPoliza
-                {
-                    Cantidad = 2000,
-                    Fecha = DateTime.Today,
-                    Concesionario = db.Concesionarios.Where(x => x.Id == _concesionario.Id).First()
-                };
-
-                db.RecibosPoliza.Add(recibo);
+                
                 db.SaveChanges();
                 cargarDatos();
             }

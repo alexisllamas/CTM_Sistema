@@ -45,23 +45,23 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtNombre = new Ctm_Col.MaterialTextBox();
-            this.txtApPaterno = new Ctm_Col.MaterialTextBox();
             this.lblFecha = new System.Windows.Forms.Label();
-            this.txtApMaterno = new Ctm_Col.MaterialTextBox();
             this.dtConNacimiento = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtConTelefono = new Ctm_Col.MaterialTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtConCalle = new Ctm_Col.MaterialTextBox();
-            this.txtConColonia = new Ctm_Col.MaterialTextBox();
             this.cmbConMunicipio = new System.Windows.Forms.ComboBox();
-            this.txtConId = new Ctm_Col.MaterialTextBox();
-            this.txtLicencia = new Ctm_Col.MaterialTextBox();
             this.grpboxCredencial = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnAccidentes = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnReciboDeducible = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.txtLicencia = new Ctm_Col.MaterialTextBox();
+            this.txtNombre = new Ctm_Col.MaterialTextBox();
+            this.txtApPaterno = new Ctm_Col.MaterialTextBox();
+            this.txtApMaterno = new Ctm_Col.MaterialTextBox();
+            this.txtConTelefono = new Ctm_Col.MaterialTextBox();
+            this.txtConCalle = new Ctm_Col.MaterialTextBox();
+            this.txtConColonia = new Ctm_Col.MaterialTextBox();
+            this.txtConId = new Ctm_Col.MaterialTextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpboxCredencial.SuspendLayout();
@@ -189,9 +189,6 @@
             // lvChoferes
             // 
             this.lvChoferes.AllowColumnReorder = true;
-            this.lvChoferes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvChoferes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -202,10 +199,10 @@
             this.columnHeader5});
             this.lvChoferes.FullRowSelect = true;
             this.lvChoferes.GridLines = true;
-            this.lvChoferes.Location = new System.Drawing.Point(5, 491);
+            this.lvChoferes.Location = new System.Drawing.Point(5, 500);
             this.lvChoferes.MultiSelect = false;
             this.lvChoferes.Name = "lvChoferes";
-            this.lvChoferes.Size = new System.Drawing.Size(611, 153);
+            this.lvChoferes.Size = new System.Drawing.Size(611, 147);
             this.lvChoferes.TabIndex = 67;
             this.lvChoferes.UseCompatibleStateImageBehavior = false;
             this.lvChoferes.View = System.Windows.Forms.View.Details;
@@ -262,22 +259,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos Personales";
             // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(6, 19);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Placeholder = "Nombre(s)";
-            this.txtNombre.Size = new System.Drawing.Size(116, 48);
-            this.txtNombre.TabIndex = 2;
-            // 
-            // txtApPaterno
-            // 
-            this.txtApPaterno.Location = new System.Drawing.Point(128, 19);
-            this.txtApPaterno.Name = "txtApPaterno";
-            this.txtApPaterno.Placeholder = "Apellido Paterno";
-            this.txtApPaterno.Size = new System.Drawing.Size(116, 48);
-            this.txtApPaterno.TabIndex = 3;
-            // 
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
@@ -288,14 +269,6 @@
             this.lblFecha.Size = new System.Drawing.Size(109, 12);
             this.lblFecha.TabIndex = 11;
             this.lblFecha.Text = "Fecha de nacimiento";
-            // 
-            // txtApMaterno
-            // 
-            this.txtApMaterno.Location = new System.Drawing.Point(250, 19);
-            this.txtApMaterno.Name = "txtApMaterno";
-            this.txtApMaterno.Placeholder = "Apellido Materno";
-            this.txtApMaterno.Size = new System.Drawing.Size(116, 48);
-            this.txtApMaterno.TabIndex = 4;
             // 
             // dtConNacimiento
             // 
@@ -323,14 +296,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Domicilio";
             // 
-            // txtConTelefono
-            // 
-            this.txtConTelefono.Location = new System.Drawing.Point(268, 19);
-            this.txtConTelefono.Name = "txtConTelefono";
-            this.txtConTelefono.Placeholder = "Teléfono";
-            this.txtConTelefono.Size = new System.Drawing.Size(83, 48);
-            this.txtConTelefono.TabIndex = 7;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -341,22 +306,6 @@
             this.label1.Size = new System.Drawing.Size(54, 12);
             this.label1.TabIndex = 12;
             this.label1.Text = "Municipio";
-            // 
-            // txtConCalle
-            // 
-            this.txtConCalle.Location = new System.Drawing.Point(7, 19);
-            this.txtConCalle.Name = "txtConCalle";
-            this.txtConCalle.Placeholder = "Calle y número";
-            this.txtConCalle.Size = new System.Drawing.Size(149, 48);
-            this.txtConCalle.TabIndex = 6;
-            // 
-            // txtConColonia
-            // 
-            this.txtConColonia.Location = new System.Drawing.Point(162, 19);
-            this.txtConColonia.Name = "txtConColonia";
-            this.txtConColonia.Placeholder = "Colonia";
-            this.txtConColonia.Size = new System.Drawing.Size(99, 48);
-            this.txtConColonia.TabIndex = 8;
             // 
             // cmbConMunicipio
             // 
@@ -377,24 +326,6 @@
             this.cmbConMunicipio.Name = "cmbConMunicipio";
             this.cmbConMunicipio.Size = new System.Drawing.Size(121, 21);
             this.cmbConMunicipio.TabIndex = 9;
-            // 
-            // txtConId
-            // 
-            this.txtConId.Enabled = false;
-            this.txtConId.Location = new System.Drawing.Point(58, 8);
-            this.txtConId.Name = "txtConId";
-            this.txtConId.Placeholder = "Id";
-            this.txtConId.Size = new System.Drawing.Size(79, 48);
-            this.txtConId.TabIndex = 73;
-            this.txtConId.Text = "3";
-            // 
-            // txtLicencia
-            // 
-            this.txtLicencia.Location = new System.Drawing.Point(282, 8);
-            this.txtLicencia.Name = "txtLicencia";
-            this.txtLicencia.Placeholder = "Licencia";
-            this.txtLicencia.Size = new System.Drawing.Size(230, 48);
-            this.txtLicencia.TabIndex = 81;
             // 
             // grpboxCredencial
             // 
@@ -443,6 +374,88 @@
             this.btnReciboDeducible.UseVisualStyleBackColor = true;
             this.btnReciboDeducible.Click += new System.EventHandler(this.btnReciboDeducible_Click);
             // 
+            // txtLicencia
+            // 
+            this.txtLicencia.Location = new System.Drawing.Point(282, 17);
+            this.txtLicencia.MaximumSize = new System.Drawing.Size(0, 32);
+            this.txtLicencia.MinimumSize = new System.Drawing.Size(0, 32);
+            this.txtLicencia.Name = "txtLicencia";
+            this.txtLicencia.Placeholder = "Licencia";
+            this.txtLicencia.Size = new System.Drawing.Size(0, 32);
+            this.txtLicencia.TabIndex = 81;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(-4, 19);
+            this.txtNombre.MaximumSize = new System.Drawing.Size(0, 32);
+            this.txtNombre.MinimumSize = new System.Drawing.Size(0, 32);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Placeholder = "Nombre(s)";
+            this.txtNombre.Size = new System.Drawing.Size(0, 32);
+            this.txtNombre.TabIndex = 2;
+            // 
+            // txtApPaterno
+            // 
+            this.txtApPaterno.Location = new System.Drawing.Point(128, 19);
+            this.txtApPaterno.MaximumSize = new System.Drawing.Size(0, 32);
+            this.txtApPaterno.MinimumSize = new System.Drawing.Size(0, 32);
+            this.txtApPaterno.Name = "txtApPaterno";
+            this.txtApPaterno.Placeholder = "Apellido Paterno";
+            this.txtApPaterno.Size = new System.Drawing.Size(122, 32);
+            this.txtApPaterno.TabIndex = 3;
+            // 
+            // txtApMaterno
+            // 
+            this.txtApMaterno.Location = new System.Drawing.Point(250, 19);
+            this.txtApMaterno.MaximumSize = new System.Drawing.Size(0, 32);
+            this.txtApMaterno.MinimumSize = new System.Drawing.Size(0, 32);
+            this.txtApMaterno.Name = "txtApMaterno";
+            this.txtApMaterno.Placeholder = "Apellido Materno";
+            this.txtApMaterno.Size = new System.Drawing.Size(0, 32);
+            this.txtApMaterno.TabIndex = 4;
+            // 
+            // txtConTelefono
+            // 
+            this.txtConTelefono.Location = new System.Drawing.Point(268, 19);
+            this.txtConTelefono.MaximumSize = new System.Drawing.Size(0, 32);
+            this.txtConTelefono.MinimumSize = new System.Drawing.Size(0, 32);
+            this.txtConTelefono.Name = "txtConTelefono";
+            this.txtConTelefono.Placeholder = "Teléfono";
+            this.txtConTelefono.Size = new System.Drawing.Size(0, 32);
+            this.txtConTelefono.TabIndex = 7;
+            // 
+            // txtConCalle
+            // 
+            this.txtConCalle.Location = new System.Drawing.Point(7, 19);
+            this.txtConCalle.MaximumSize = new System.Drawing.Size(0, 32);
+            this.txtConCalle.MinimumSize = new System.Drawing.Size(0, 32);
+            this.txtConCalle.Name = "txtConCalle";
+            this.txtConCalle.Placeholder = "Calle y número";
+            this.txtConCalle.Size = new System.Drawing.Size(0, 32);
+            this.txtConCalle.TabIndex = 6;
+            // 
+            // txtConColonia
+            // 
+            this.txtConColonia.Location = new System.Drawing.Point(162, 19);
+            this.txtConColonia.MaximumSize = new System.Drawing.Size(0, 32);
+            this.txtConColonia.MinimumSize = new System.Drawing.Size(0, 32);
+            this.txtConColonia.Name = "txtConColonia";
+            this.txtConColonia.Placeholder = "Colonia";
+            this.txtConColonia.Size = new System.Drawing.Size(0, 32);
+            this.txtConColonia.TabIndex = 8;
+            // 
+            // txtConId
+            // 
+            this.txtConId.Enabled = false;
+            this.txtConId.Location = new System.Drawing.Point(58, 17);
+            this.txtConId.MaximumSize = new System.Drawing.Size(0, 32);
+            this.txtConId.MinimumSize = new System.Drawing.Size(0, 32);
+            this.txtConId.Name = "txtConId";
+            this.txtConId.Placeholder = "Id";
+            this.txtConId.Size = new System.Drawing.Size(0, 32);
+            this.txtConId.TabIndex = 73;
+            this.txtConId.Text = "3";
+            // 
             // ChoferControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -461,7 +474,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtConId);
             this.Name = "ChoferControl";
-            this.Size = new System.Drawing.Size(619, 644);
+            this.Size = new System.Drawing.Size(627, 660);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvChoferes_KeyDown);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

@@ -172,11 +172,22 @@ namespace Ctm_Col
                     {
                         if (chofer.RecibosCredencial.Any())
                         {
-                            foreach (var recibos in db.RecibosCredencial.Where((System.Linq.Expressions.Expression<Func<ReciboCredencial, bool>>)(x => x.Chofer.Id == Chofer.Id)))
+                            foreach (var recibos in db.RecibosCredencial.Where(x => x.Chofer.Id == Chofer.Id))
                             {
                                 db.RecibosCredencial.Remove(recibos);
                             }
                         }
+
+                        if (chofer.RecibosDeducible.Any())
+                        {
+                            foreach (var recibos in db.RecibosDeducible.Where(x => x.Chofer.Id == Chofer.Id))
+                            {
+                                db.RecibosDeducible.Remove(recibos);
+                            }
+                        }
+
+                        if (chofer.Credencial != null)
+                            db.Credenciales.Remove(db.Credenciales.Where(x => x.Id == chofer.Id).First());
 
                         db.Choferes.Remove(chofer);
                         db.SaveChanges();
@@ -311,37 +322,18 @@ namespace Ctm_Col
                     {
                         DialogResult button = MessageBox.Show("Sin credencial, ¿Tramitar Credencial?", "Hola", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                        if (button == DialogResult.Yes)
+                        if (button != DialogResult.Yes) return; 
+
+                        chofer.Credencial = new Credencial
                         {
-                            chofer.Credencial = new Credencial
-                            {
-                                FechaInicioVigencia = DateTime.Today,
-                                FechaFinalVigencia = DateTime.Today.AddYears(1)
-                            };
-                            db.SaveChanges();
-                            var recibo = new ReciboCredencial
-                            {
-                                Fecha = DateTime.Today,
-                                Cantidad = 200
-                            };
-                            chofer.RecibosCredencial.Add(recibo);
-                            db.SaveChanges();
-                            DialogResult reciboImprimir = MessageBox.Show("¿Imprimir recibo?", "Hola", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                            if (reciboImprimir == DialogResult.Yes)
-                            {
-
-                            }
-                            var credencialForm = new CredencialForm(Chofer);
-                            credencialForm.ShowDialog();
-                        }
+                            FechaInicioVigencia = DateTime.Today,
+                            FechaFinalVigencia = DateTime.Today.AddYears(1)
+                        };
+                        db.SaveChanges();
                     }
-                    else
-                    {
-                        var credencialForm = new CredencialForm(Chofer);
+                    var credencialForm = new CredencialForm(Chofer);
 
-                        credencialForm.Show();
-                    }
+                    credencialForm.ShowDialog();
                 }
             }
         }

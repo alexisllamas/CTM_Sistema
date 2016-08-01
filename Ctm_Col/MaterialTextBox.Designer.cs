@@ -28,23 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.placeholder = new System.Windows.Forms.Label();
+            this.txt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // txt
-            // 
-            this.txt.Depth = 0;
-            this.txt.Font = new System.Drawing.Font("Segoe Print", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt.Hint = "";
-            this.txt.Location = new System.Drawing.Point(0, 19);
-            this.txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txt.Name = "txt";
-            this.txt.Size = new System.Drawing.Size(169, 23);
-            this.txt.TabIndex = 0;
-            this.txt.TabStop = false;
-            this.txt.Enter += new System.EventHandler(this.txt_Enter);
-            this.txt.Leave += new System.EventHandler(this.txt_Leave);
             // 
             // placeholder
             // 
@@ -55,24 +41,30 @@
             this.placeholder.Name = "placeholder";
             this.placeholder.Size = new System.Drawing.Size(0, 13);
             this.placeholder.TabIndex = 100;
-            this.placeholder.Visible = false;
+            // 
+            // txt
+            // 
+            this.txt.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txt.Location = new System.Drawing.Point(0, 22);
+            this.txt.Name = "txt";
+            this.txt.Size = new System.Drawing.Size(106, 20);
+            this.txt.TabIndex = 101;
             // 
             // MaterialTextBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.placeholder);
             this.Controls.Add(this.txt);
+            this.Controls.Add(this.placeholder);
             this.Name = "MaterialTextBox";
-            this.Size = new System.Drawing.Size(172, 48);
-            this.Resize += new System.EventHandler(this.MaterialTextBox_Resize);
+            this.Size = new System.Drawing.Size(106, 42);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private MaterialSkin.Controls.MaterialSingleLineTextField txt;
         private System.Windows.Forms.Label placeholder;
+        private System.Windows.Forms.TextBox txt;
     }
 }

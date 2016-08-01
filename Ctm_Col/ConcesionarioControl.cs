@@ -6,16 +6,27 @@ using Ctm_Col.Models;
 using System.Data.Entity;
 using MaterialSkin.Controls;
 using MaterialSkin;
-using DevExpress.XtraEditors;
+using System.ComponentModel;
 
 namespace Ctm_Col
 {
     public partial class ConcesionarioControl : UserControl
     {
         private string search = "";
-        private Models.Concesionario _concesionario;
+        private Concesionario _concesionario;
         private bool isModoVer;
         private int sort = -1;
+
+        [Category("Appearance")]
+        [Description("The placeholder displayed by the control.")]
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        public int WidhtRecommend
+        {
+            get
+            {
+                return 787;
+            }
+        }
 
         private Concesionario Concesionario
         {
@@ -40,12 +51,6 @@ namespace Ctm_Col
         public ConcesionarioControl()
         {
             InitializeComponent();
-
-            //var materialSkinManager = MaterialSkinManager.Instance;
-            //materialSkinManager.AddFormToManage(this);
-            //materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            //materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan800, Primary.Cyan900, Primary.Cyan500, Accent.Cyan200, TextShade.WHITE);
-
             using (var db = new Db())
             {
                 var concesionarios = db.Concesionarios.OrderBy(c => c.ApellidoPaterno).ThenBy(c => c.ApellidoMaterno).ThenBy(c => c.Nombres);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
@@ -39,16 +40,10 @@
             this.btnEliminar = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnCancelar = new MaterialSkin.Controls.MaterialFlatButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtMotor = new Ctm_Col.MaterialTextBox();
-            this.txtNumSerie = new Ctm_Col.MaterialTextBox();
             this.txtCapacidad = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtPlaca = new Ctm_Col.MaterialTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtModelo = new System.Windows.Forms.DateTimePicker();
-            this.txtMarca = new Ctm_Col.MaterialTextBox();
-            this.txtSitio = new Ctm_Col.MaterialTextBox();
-            this.txtNumero = new Ctm_Col.MaterialTextBox();
             this.lvConcesionarios = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -60,34 +55,42 @@
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtRfc = new Ctm_Col.MaterialTextBox();
-            this.txtCargo = new Ctm_Col.MaterialTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtNombre = new Ctm_Col.MaterialTextBox();
-            this.txtApPaterno = new Ctm_Col.MaterialTextBox();
             this.lblFecha = new System.Windows.Forms.Label();
-            this.txtApMaterno = new Ctm_Col.MaterialTextBox();
             this.dtConNacimiento = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtConTelefono = new Ctm_Col.MaterialTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtConCalle = new Ctm_Col.MaterialTextBox();
-            this.txtConColonia = new Ctm_Col.MaterialTextBox();
             this.cmbConMunicipio = new System.Windows.Forms.ComboBox();
-            this.txtConId = new Ctm_Col.MaterialTextBox();
             this.btnPrimerIngreso = new MaterialSkin.Controls.MaterialRaisedButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtBuscar = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.chckSitio = new MaterialSkin.Controls.MaterialCheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbSitios = new System.Windows.Forms.ComboBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtMotor = new Ctm_Col.MaterialTextBox();
+            this.txtNumSerie = new Ctm_Col.MaterialTextBox();
+            this.txtPlaca = new Ctm_Col.MaterialTextBox();
+            this.txtMarca = new Ctm_Col.MaterialTextBox();
+            this.txtSitio = new Ctm_Col.MaterialTextBox();
+            this.txtNumero = new Ctm_Col.MaterialTextBox();
+            this.txtRfc = new Ctm_Col.MaterialTextBox();
+            this.txtCargo = new Ctm_Col.MaterialTextBox();
+            this.txtNombre = new Ctm_Col.MaterialTextBox();
+            this.txtApPaterno = new Ctm_Col.MaterialTextBox();
+            this.txtApMaterno = new Ctm_Col.MaterialTextBox();
+            this.txtConTelefono = new Ctm_Col.MaterialTextBox();
+            this.txtConCalle = new Ctm_Col.MaterialTextBox();
+            this.txtConColonia = new Ctm_Col.MaterialTextBox();
+            this.txtConId = new Ctm_Col.MaterialTextBox();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCapacidad)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -215,7 +218,6 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.txtMotor);
             this.groupBox4.Controls.Add(this.txtNumSerie);
             this.groupBox4.Controls.Add(this.txtCapacidad);
@@ -232,22 +234,6 @@
             this.groupBox4.TabIndex = 58;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Taxi";
-            // 
-            // txtMotor
-            // 
-            this.txtMotor.Location = new System.Drawing.Point(6, 234);
-            this.txtMotor.Name = "txtMotor";
-            this.txtMotor.Placeholder = "Motor";
-            this.txtMotor.Size = new System.Drawing.Size(203, 48);
-            this.txtMotor.TabIndex = 20;
-            // 
-            // txtNumSerie
-            // 
-            this.txtNumSerie.Location = new System.Drawing.Point(6, 180);
-            this.txtNumSerie.Name = "txtNumSerie";
-            this.txtNumSerie.Placeholder = "Número de serie";
-            this.txtNumSerie.Size = new System.Drawing.Size(203, 48);
-            this.txtNumSerie.TabIndex = 19;
             // 
             // txtCapacidad
             // 
@@ -273,14 +259,6 @@
             this.label5.TabIndex = 17;
             this.label5.Text = "Capacidad";
             // 
-            // txtPlaca
-            // 
-            this.txtPlaca.Location = new System.Drawing.Point(6, 127);
-            this.txtPlaca.Name = "txtPlaca";
-            this.txtPlaca.Placeholder = "Placa";
-            this.txtPlaca.Size = new System.Drawing.Size(203, 48);
-            this.txtPlaca.TabIndex = 18;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -305,37 +283,11 @@
             this.txtModelo.TabIndex = 17;
             this.txtModelo.Value = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
             // 
-            // txtMarca
-            // 
-            this.txtMarca.Location = new System.Drawing.Point(6, 73);
-            this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Placeholder = "Marca";
-            this.txtMarca.Size = new System.Drawing.Size(73, 48);
-            this.txtMarca.TabIndex = 15;
-            // 
-            // txtSitio
-            // 
-            this.txtSitio.Location = new System.Drawing.Point(72, 19);
-            this.txtSitio.Name = "txtSitio";
-            this.txtSitio.Placeholder = "Sitio";
-            this.txtSitio.Size = new System.Drawing.Size(154, 48);
-            this.txtSitio.TabIndex = 14;
-            this.txtSitio.Tag = "";
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.Location = new System.Drawing.Point(6, 19);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Placeholder = "Número";
-            this.txtNumero.Size = new System.Drawing.Size(60, 48);
-            this.txtNumero.TabIndex = 13;
-            // 
             // lvConcesionarios
             // 
             this.lvConcesionarios.AllowColumnReorder = true;
-            this.lvConcesionarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvConcesionarios.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lvConcesionarios.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -351,7 +303,7 @@
             this.lvConcesionarios.Location = new System.Drawing.Point(18, 448);
             this.lvConcesionarios.MultiSelect = false;
             this.lvConcesionarios.Name = "lvConcesionarios";
-            this.lvConcesionarios.Size = new System.Drawing.Size(748, 153);
+            this.lvConcesionarios.Size = new System.Drawing.Size(748, 187);
             this.lvConcesionarios.TabIndex = 53;
             this.lvConcesionarios.UseCompatibleStateImageBehavior = false;
             this.lvConcesionarios.View = System.Windows.Forms.View.Details;
@@ -415,22 +367,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Otros datos";
             // 
-            // txtRfc
-            // 
-            this.txtRfc.Location = new System.Drawing.Point(12, 19);
-            this.txtRfc.Name = "txtRfc";
-            this.txtRfc.Placeholder = "RFC";
-            this.txtRfc.Size = new System.Drawing.Size(186, 48);
-            this.txtRfc.TabIndex = 10;
-            // 
-            // txtCargo
-            // 
-            this.txtCargo.Location = new System.Drawing.Point(12, 73);
-            this.txtCargo.Name = "txtCargo";
-            this.txtCargo.Placeholder = "Cargo";
-            this.txtCargo.Size = new System.Drawing.Size(186, 48);
-            this.txtCargo.TabIndex = 12;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtNombre);
@@ -445,22 +381,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos Personales";
             // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(6, 19);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Placeholder = "Nombre(s)";
-            this.txtNombre.Size = new System.Drawing.Size(116, 48);
-            this.txtNombre.TabIndex = 2;
-            // 
-            // txtApPaterno
-            // 
-            this.txtApPaterno.Location = new System.Drawing.Point(128, 19);
-            this.txtApPaterno.Name = "txtApPaterno";
-            this.txtApPaterno.Placeholder = "Apellido Paterno";
-            this.txtApPaterno.Size = new System.Drawing.Size(116, 48);
-            this.txtApPaterno.TabIndex = 3;
-            // 
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
@@ -471,14 +391,6 @@
             this.lblFecha.Size = new System.Drawing.Size(109, 12);
             this.lblFecha.TabIndex = 11;
             this.lblFecha.Text = "Fecha de nacimiento";
-            // 
-            // txtApMaterno
-            // 
-            this.txtApMaterno.Location = new System.Drawing.Point(250, 19);
-            this.txtApMaterno.Name = "txtApMaterno";
-            this.txtApMaterno.Placeholder = "Apellido Materno";
-            this.txtApMaterno.Size = new System.Drawing.Size(116, 48);
-            this.txtApMaterno.TabIndex = 4;
             // 
             // dtConNacimiento
             // 
@@ -506,14 +418,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Domicilio";
             // 
-            // txtConTelefono
-            // 
-            this.txtConTelefono.Location = new System.Drawing.Point(161, 19);
-            this.txtConTelefono.Name = "txtConTelefono";
-            this.txtConTelefono.Placeholder = "Teléfono";
-            this.txtConTelefono.Size = new System.Drawing.Size(83, 48);
-            this.txtConTelefono.TabIndex = 7;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -524,22 +428,6 @@
             this.label1.Size = new System.Drawing.Size(54, 12);
             this.label1.TabIndex = 12;
             this.label1.Text = "Municipio";
-            // 
-            // txtConCalle
-            // 
-            this.txtConCalle.Location = new System.Drawing.Point(7, 19);
-            this.txtConCalle.Name = "txtConCalle";
-            this.txtConCalle.Placeholder = "Calle y número";
-            this.txtConCalle.Size = new System.Drawing.Size(149, 48);
-            this.txtConCalle.TabIndex = 6;
-            // 
-            // txtConColonia
-            // 
-            this.txtConColonia.Location = new System.Drawing.Point(7, 73);
-            this.txtConColonia.Name = "txtConColonia";
-            this.txtConColonia.Placeholder = "Colonia";
-            this.txtConColonia.Size = new System.Drawing.Size(83, 48);
-            this.txtConColonia.TabIndex = 8;
             // 
             // cmbConMunicipio
             // 
@@ -561,16 +449,6 @@
             this.cmbConMunicipio.Size = new System.Drawing.Size(121, 21);
             this.cmbConMunicipio.TabIndex = 9;
             // 
-            // txtConId
-            // 
-            this.txtConId.Enabled = false;
-            this.txtConId.Location = new System.Drawing.Point(20, 14);
-            this.txtConId.Name = "txtConId";
-            this.txtConId.Placeholder = "Id";
-            this.txtConId.Size = new System.Drawing.Size(40, 48);
-            this.txtConId.TabIndex = 59;
-            this.txtConId.Text = "3";
-            // 
             // btnPrimerIngreso
             // 
             this.btnPrimerIngreso.Depth = 0;
@@ -586,8 +464,8 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.txtBuscar);
+            this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.chckSitio);
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.cmbSitios);
@@ -597,6 +475,13 @@
             this.groupBox5.TabIndex = 81;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Filtrar";
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(7, 40);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(100, 20);
+            this.txtBuscar.TabIndex = 80;
             // 
             // label3
             // 
@@ -609,27 +494,11 @@
             this.label3.TabIndex = 76;
             this.label3.Text = "Buscar:";
             // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Depth = 0;
-            this.txtBuscar.Hint = "Buscar...";
-            this.txtBuscar.Location = new System.Drawing.Point(8, 40);
-            this.txtBuscar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.PasswordChar = '\0';
-            this.txtBuscar.SelectedText = "";
-            this.txtBuscar.SelectionLength = 0;
-            this.txtBuscar.SelectionStart = 0;
-            this.txtBuscar.Size = new System.Drawing.Size(144, 23);
-            this.txtBuscar.TabIndex = 75;
-            this.txtBuscar.UseSystemPasswordChar = false;
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            // 
             // chckSitio
             // 
             this.chckSitio.AutoSize = true;
             this.chckSitio.Depth = 0;
-            this.chckSitio.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chckSitio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.chckSitio.Location = new System.Drawing.Point(164, 40);
             this.chckSitio.Margin = new System.Windows.Forms.Padding(0);
             this.chckSitio.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -663,6 +532,163 @@
             this.cmbSitios.TabIndex = 78;
             this.cmbSitios.SelectedIndexChanged += new System.EventHandler(this.cmbSitios_SelectedIndexChanged);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // txtMotor
+            // 
+            this.txtMotor.Location = new System.Drawing.Point(6, 234);
+            this.txtMotor.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtMotor.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtMotor.Name = "txtMotor";
+            this.txtMotor.Placeholder = "Motor";
+            this.txtMotor.Size = new System.Drawing.Size(203, 42);
+            this.txtMotor.TabIndex = 20;
+            // 
+            // txtNumSerie
+            // 
+            this.txtNumSerie.Location = new System.Drawing.Point(6, 180);
+            this.txtNumSerie.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtNumSerie.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtNumSerie.Name = "txtNumSerie";
+            this.txtNumSerie.Placeholder = "Número de serie";
+            this.txtNumSerie.Size = new System.Drawing.Size(203, 42);
+            this.txtNumSerie.TabIndex = 19;
+            // 
+            // txtPlaca
+            // 
+            this.txtPlaca.Location = new System.Drawing.Point(6, 127);
+            this.txtPlaca.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtPlaca.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtPlaca.Name = "txtPlaca";
+            this.txtPlaca.Placeholder = "Placa";
+            this.txtPlaca.Size = new System.Drawing.Size(203, 42);
+            this.txtPlaca.TabIndex = 18;
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.Location = new System.Drawing.Point(6, 73);
+            this.txtMarca.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtMarca.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Placeholder = "Marca";
+            this.txtMarca.Size = new System.Drawing.Size(73, 42);
+            this.txtMarca.TabIndex = 15;
+            // 
+            // txtSitio
+            // 
+            this.txtSitio.Location = new System.Drawing.Point(72, 19);
+            this.txtSitio.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtSitio.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtSitio.Name = "txtSitio";
+            this.txtSitio.Placeholder = "Sitio";
+            this.txtSitio.Size = new System.Drawing.Size(154, 42);
+            this.txtSitio.TabIndex = 14;
+            this.txtSitio.Tag = "";
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(6, 19);
+            this.txtNumero.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtNumero.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Placeholder = "Número";
+            this.txtNumero.Size = new System.Drawing.Size(60, 42);
+            this.txtNumero.TabIndex = 13;
+            // 
+            // txtRfc
+            // 
+            this.txtRfc.Location = new System.Drawing.Point(12, 19);
+            this.txtRfc.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtRfc.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtRfc.Name = "txtRfc";
+            this.txtRfc.Placeholder = "RFC";
+            this.txtRfc.Size = new System.Drawing.Size(186, 42);
+            this.txtRfc.TabIndex = 10;
+            // 
+            // txtCargo
+            // 
+            this.txtCargo.Location = new System.Drawing.Point(12, 73);
+            this.txtCargo.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtCargo.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtCargo.Name = "txtCargo";
+            this.txtCargo.Placeholder = "Cargo";
+            this.txtCargo.Size = new System.Drawing.Size(186, 42);
+            this.txtCargo.TabIndex = 12;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(6, 19);
+            this.txtNombre.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtNombre.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Placeholder = "Nombre(s)";
+            this.txtNombre.Size = new System.Drawing.Size(116, 42);
+            this.txtNombre.TabIndex = 2;
+            // 
+            // txtApPaterno
+            // 
+            this.txtApPaterno.Location = new System.Drawing.Point(128, 19);
+            this.txtApPaterno.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtApPaterno.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtApPaterno.Name = "txtApPaterno";
+            this.txtApPaterno.Placeholder = "Apellido Paterno";
+            this.txtApPaterno.Size = new System.Drawing.Size(116, 42);
+            this.txtApPaterno.TabIndex = 3;
+            // 
+            // txtApMaterno
+            // 
+            this.txtApMaterno.Location = new System.Drawing.Point(250, 19);
+            this.txtApMaterno.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtApMaterno.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtApMaterno.Name = "txtApMaterno";
+            this.txtApMaterno.Placeholder = "Apellido Materno";
+            this.txtApMaterno.Size = new System.Drawing.Size(116, 42);
+            this.txtApMaterno.TabIndex = 4;
+            // 
+            // txtConTelefono
+            // 
+            this.txtConTelefono.Location = new System.Drawing.Point(161, 19);
+            this.txtConTelefono.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtConTelefono.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtConTelefono.Name = "txtConTelefono";
+            this.txtConTelefono.Placeholder = "Teléfono";
+            this.txtConTelefono.Size = new System.Drawing.Size(83, 42);
+            this.txtConTelefono.TabIndex = 7;
+            // 
+            // txtConCalle
+            // 
+            this.txtConCalle.Location = new System.Drawing.Point(7, 19);
+            this.txtConCalle.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtConCalle.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtConCalle.Name = "txtConCalle";
+            this.txtConCalle.Placeholder = "Calle y número";
+            this.txtConCalle.Size = new System.Drawing.Size(149, 42);
+            this.txtConCalle.TabIndex = 6;
+            // 
+            // txtConColonia
+            // 
+            this.txtConColonia.Location = new System.Drawing.Point(7, 73);
+            this.txtConColonia.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtConColonia.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtConColonia.Name = "txtConColonia";
+            this.txtConColonia.Placeholder = "Colonia";
+            this.txtConColonia.Size = new System.Drawing.Size(83, 42);
+            this.txtConColonia.TabIndex = 8;
+            // 
+            // txtConId
+            // 
+            this.txtConId.Enabled = false;
+            this.txtConId.Location = new System.Drawing.Point(20, 14);
+            this.txtConId.MaximumSize = new System.Drawing.Size(10000, 42);
+            this.txtConId.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtConId.Name = "txtConId";
+            this.txtConId.Placeholder = "Id";
+            this.txtConId.Size = new System.Drawing.Size(40, 42);
+            this.txtConId.TabIndex = 59;
+            this.txtConId.Text = "3";
+            // 
             // ConcesionarioControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -682,7 +708,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtConId);
             this.Name = "ConcesionarioControl";
-            this.Size = new System.Drawing.Size(787, 601);
+            this.Size = new System.Drawing.Size(787, 651);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvConcesionarios_KeyDown);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -694,6 +720,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -750,9 +777,10 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnPrimerIngreso;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label3;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtBuscar;
         private MaterialSkin.Controls.MaterialCheckBox chckSitio;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbSitios;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.TextBox txtBuscar;
     }
 }

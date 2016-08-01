@@ -46,7 +46,7 @@
             // 
             this.cmbSitios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSitios.FormattingEnabled = true;
-            this.cmbSitios.Location = new System.Drawing.Point(25, 151);
+            this.cmbSitios.Location = new System.Drawing.Point(19, 83);
             this.cmbSitios.Name = "cmbSitios";
             this.cmbSitios.Size = new System.Drawing.Size(121, 21);
             this.cmbSitios.TabIndex = 0;
@@ -56,7 +56,7 @@
             this.lblFecha.AutoSize = true;
             this.lblFecha.Enabled = false;
             this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(23, 136);
+            this.lblFecha.Location = new System.Drawing.Point(17, 68);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(28, 12);
             this.lblFecha.TabIndex = 12;
@@ -65,11 +65,11 @@
             // btnGenerar
             // 
             this.btnGenerar.Depth = 0;
-            this.btnGenerar.Location = new System.Drawing.Point(198, 149);
+            this.btnGenerar.Location = new System.Drawing.Point(172, 74);
             this.btnGenerar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Primary = true;
-            this.btnGenerar.Size = new System.Drawing.Size(139, 23);
+            this.btnGenerar.Size = new System.Drawing.Size(147, 36);
             this.btnGenerar.TabIndex = 13;
             this.btnGenerar.Text = "Generar por sitio";
             this.btnGenerar.UseVisualStyleBackColor = true;
@@ -78,7 +78,7 @@
             // dtpFechaFin
             // 
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaFin.Location = new System.Drawing.Point(25, 99);
+            this.dtpFechaFin.Location = new System.Drawing.Point(19, 31);
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.Size = new System.Drawing.Size(86, 20);
             this.dtpFechaFin.TabIndex = 14;
@@ -88,7 +88,7 @@
             this.label1.AutoSize = true;
             this.label1.Enabled = false;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 84);
+            this.label1.Location = new System.Drawing.Point(17, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 12);
             this.label1.TabIndex = 15;
@@ -99,7 +99,7 @@
             this.label2.AutoSize = true;
             this.label2.Enabled = false;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(143, 83);
+            this.label2.Location = new System.Drawing.Point(137, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 12);
             this.label2.TabIndex = 17;
@@ -109,7 +109,7 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(145, 98);
+            this.comboBox1.Location = new System.Drawing.Point(139, 30);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(83, 21);
             this.comboBox1.TabIndex = 16;
@@ -119,7 +119,7 @@
             this.label3.AutoSize = true;
             this.label3.Enabled = false;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(257, 83);
+            this.label3.Location = new System.Drawing.Point(251, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 12);
             this.label3.TabIndex = 64;
@@ -128,7 +128,7 @@
             // txtCantidad
             // 
             this.txtCantidad.DecimalPlaces = 2;
-            this.txtCantidad.Location = new System.Drawing.Point(259, 98);
+            this.txtCantidad.Location = new System.Drawing.Point(253, 30);
             this.txtCantidad.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -141,7 +141,7 @@
             // btnGenerarTodas
             // 
             this.btnGenerarTodas.Depth = 0;
-            this.btnGenerarTodas.Location = new System.Drawing.Point(105, 211);
+            this.btnGenerarTodas.Location = new System.Drawing.Point(99, 143);
             this.btnGenerarTodas.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnGenerarTodas.Name = "btnGenerarTodas";
             this.btnGenerarTodas.Primary = true;
@@ -155,7 +155,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 267);
+            this.ClientSize = new System.Drawing.Size(351, 200);
             this.Controls.Add(this.btnGenerarTodas);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCantidad);
@@ -166,7 +166,6 @@
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.cmbSitios);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GenerarPolizaForm";
             this.Text = "Generar Pólizas";
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();

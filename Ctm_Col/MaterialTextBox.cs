@@ -21,7 +21,6 @@ namespace Ctm_Col
             set
             {
                 placeholder.Text = value;
-                txt.Hint = value;
             }
             get
             {
@@ -35,19 +34,7 @@ namespace Ctm_Col
         {
             set
             {
-                if (value != null)
-                {
-                    txt.Text = value;
-
-                    if (value.Length > 0)
-                    {
-                        placeholder.Visible = true;
-                    }
-                } else
-                {
-                    txt.Text = "";
-                }
-
+                txt.Text = value;
             }
             get
             {
@@ -57,25 +44,8 @@ namespace Ctm_Col
         public MaterialTextBox()
         {
             InitializeComponent();
-            Height = 48;      
-        }
 
-        private void txt_Enter(object sender, EventArgs e)
-        {
-            placeholder.Visible = true;
         }
-
-        private void txt_Leave(object sender, EventArgs e)
-        {
-            if (txt.Text.Length <= 0)
-            { 
-                placeholder.Visible = false;
-            }
-        }
-
-        private void MaterialTextBox_Resize(object sender, EventArgs e)
-        {
-            txt.Width = Width;
-        }
+        
     }
 }
